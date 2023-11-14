@@ -1,0 +1,3 @@
+[submodule "build-win64-mxe"]
+	path = build-win64-mxe
+	url = https://github.com/libvips/build-win64-mxe.git
