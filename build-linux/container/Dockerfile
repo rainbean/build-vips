@@ -23,6 +23,7 @@ RUN apt-get update && \
 		libtiff-dev \
 		libexif-dev \
 		libgsf-1-dev \
+		libarchive-dev \
 		libwebp-dev \
 		libbrotli-dev \
 		liborc-dev \
