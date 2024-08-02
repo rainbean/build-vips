@@ -15,7 +15,7 @@ cd build-linux
 - build Windows:
 
 ```shell
-cp patch/openslide.mk build-win64-mxe/build
+cp patch/*.mk build-win64-mxe/build
 cd build-win64-mxe
 ./build.sh all
 ```
