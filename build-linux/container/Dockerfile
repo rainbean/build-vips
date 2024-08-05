@@ -17,8 +17,11 @@ RUN apt-get update && \
 		clang \
 		libcairo2-dev \
 		libgdk-pixbuf2.0-dev \
-		libpng-dev \
+		zlib1g-dev \
+		libzstd-dev \
+		libjpeg-dev \
 		libjpeg-turbo8-dev \
+		libpng-dev \
 		libgif-dev \
 		libtiff-dev \
 		libexif-dev \
@@ -27,6 +30,7 @@ RUN apt-get update && \
 		libwebp-dev \
 		libbrotli-dev \
 		liborc-dev \
+		libxml2-dev \
 		libsqlite3-dev
 
 # Install meson

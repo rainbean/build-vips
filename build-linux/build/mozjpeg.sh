@@ -7,7 +7,7 @@ tar xf mozjpeg.tar.gz
 cd mozjpeg-${MOZJPEG_VERSION}
 cmake -Bbuild -H. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_TURBOJPEG=OFF \
-    -DCMAKE_INSTALL_PREFIX=/usr/local
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    -DWITH_TURBOJPEG=OFF
 make -C build -j 4
 make -C build install/strip

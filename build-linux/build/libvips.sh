@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Build libvips"
-VIPS_VERSION=8.15.0
+VIPS_VERSION=8.15.2
 wget -q https://github.com/libvips/libvips/releases/download/v${VIPS_VERSION}/vips-${VIPS_VERSION}.tar.xz -O vips.tar.xz
 tar xf vips.tar.xz
 cd vips-${VIPS_VERSION}
