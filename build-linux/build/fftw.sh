@@ -2,7 +2,7 @@
 
 echo "Build FFTW"
 FFTW_VERSION=3.3.10
-wget -q https://github.com/FFTW/fftw3/archive/refs/tags/fftw-${FFTW_VERSION}.tar.gz -O fftw.tar.gz
+wget -q https://fftw.org/fftw-${FFTW_VERSION}.tar.gz -O fftw.tar.gz
 tar xf fftw.tar.gz
 cd fftw-${FFTW_VERSION}
 cmake -Bbuild -H. \
