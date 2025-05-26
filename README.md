@@ -19,3 +19,9 @@ cp patch/*.mk build-win64-mxe/build
 cd build-win64-mxe
 ./build.sh all
 ```
+
+## SBOM
+
+- install (CycloneDX Generator)[https://cyclonedx.github.io/cdxgen/] - `npm install -g @cyclonedx/cdxgen`
+- generate SBOM - `cdxgen -o sbom.json`
+
