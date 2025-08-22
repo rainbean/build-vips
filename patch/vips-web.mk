@@ -8,7 +8,7 @@ $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST
 $(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
 $(PKG)_SUBDIR   := vips-$($(PKG)_VERSION)
 $(PKG)_FILE     := vips-$($(PKG)_VERSION).tar.xz
-$(PKG)_DEPS     := cc meson-wrapper libwebp librsvg glib pango libarchive \
+$(PKG)_DEPS     := cc meson-wrapper libwebp glib pango libarchive \
                    libjpeg-turbo tiff lcms libexif libheif libpng \
                    libspng libimagequant highway cgif
 
@@ -45,7 +45,6 @@ define $(PKG)_PRE_CONFIGURE
      printf '  "pixman": "$(pixman_VERSION)",\n'; \
      printf '  "png": "$(libpng_VERSION)",\n'; \
      $(if $(IS_INTL_DUMMY),printf '  "proxy-libintl": "$(proxy-libintl_VERSION)"$(comma)\n';) \
-     printf '  "rsvg": "$(librsvg_VERSION)",\n'; \
      printf '  "spng": "$(libspng_VERSION)",\n'; \
      printf '  "tiff": "$(tiff_VERSION)",\n'; \
      printf '  "vips": "$(vips-web_VERSION)",\n'; \
