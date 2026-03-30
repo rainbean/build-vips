@@ -6,7 +6,9 @@ wget -q https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${ZLIBNG_VERSION}.t
 tar xf zlib-ng.tar.gz
 cd zlib-ng-${ZLIBNG_VERSION}
 cmake -Bbuild -H. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
     -DZLIB_COMPAT=ON \
     -DZLIB_ENABLE_TESTS=OFF
-make -C build -j 4
+make -C build -j $(nproc)
 make -C build install/strip

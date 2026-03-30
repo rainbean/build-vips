@@ -16,6 +16,16 @@ meson setup build \
     -Dquantizr=disabled \
     -Dmodules=disabled \
     -Dopenjpeg=enabled \
-    -Djpeg-xl=enabled
+    -Djpeg=enabled \
+    -Dwebp=enabled \
+    -Dtiff=enabled \
+    -Dheif=disabled \
+    -Djpeg-xl=disabled \
+    -Dmagick=disabled \
+    -Dopenexr=disabled \
+    -Dmatio=disabled \
+    -Dcfitsio=disabled \
+    -Dpoppler=disabled \
+    -Dnsgif=disabled
 meson compile -C build
 meson install -C build
