@@ -23,7 +23,8 @@ RUN apt-get update && \
 		libwebp-dev \
 		libbrotli-dev \
 		libxml2-dev \
-		libsqlite3-dev
+		libsqlite3-dev \
+		libgdk-pixbuf2.0-dev
 
 # The build dir is mounted at /data, so this runs the build script in that
 ENTRYPOINT ["/bin/bash", "/data/build.sh"]
