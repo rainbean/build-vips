@@ -8,5 +8,5 @@ cd fftw-${FFTW_VERSION}
 cmake -Bbuild -H. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local
-make -C build -j 4
+make -C build -j $(nproc)
 make -C build install/strip

@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -9,32 +9,23 @@ RUN apt-get update && \
 		wget \
 		libglib2.0-dev \
 		libexpat1-dev \
-		python-is-python3 \
-		python3-pip \
 		autoconf \
 		libtool \
-		nasm \
 		clang \
+		meson \
 		libcairo2-dev \
-		libgdk-pixbuf2.0-dev \
 		zlib1g-dev \
 		libzstd-dev \
 		libjpeg-dev \
-		libjpeg-turbo8-dev \
 		libpng-dev \
-		libgif-dev \
 		libtiff-dev \
 		libexif-dev \
-		libgsf-1-dev \
-		libarchive-dev \
 		libwebp-dev \
 		libbrotli-dev \
-		liborc-dev \
 		libxml2-dev \
-		libsqlite3-dev
-
-# Install meson
-RUN pip3 install meson
+		libsqlite3-dev \
+		libgdk-pixbuf2.0-dev \
+		libarchive-dev
 
 # The build dir is mounted at /data, so this runs the build script in that
 ENTRYPOINT ["/bin/bash", "/data/build.sh"]

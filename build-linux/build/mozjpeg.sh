@@ -9,5 +9,5 @@ cmake -Bbuild -H. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
     -DWITH_TURBOJPEG=OFF
-make -C build -j 4
+make -C build -j $(nproc)
 make -C build install/strip
