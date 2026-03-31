@@ -26,6 +26,7 @@ meson setup build \
     -Dmatio=disabled \
     -Dcfitsio=disabled \
     -Dpoppler=disabled \
-    -Dnsgif=false
+    -Dnsgif=false \
+    -Darchive=enabled
 meson compile -C build
 meson install -C build
