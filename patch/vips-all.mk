@@ -9,9 +9,8 @@ $(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
 $(PKG)_SUBDIR   := vips-$($(PKG)_VERSION)
 $(PKG)_FILE     := vips-$($(PKG)_VERSION).tar.xz
 $(PKG)_DEPS     := cc meson-wrapper libwebp glib pango libarchive \
-                   libjpeg-turbo tiff lcms libexif libheif libpng \
-                   libspng libimagequant highway imagemagick matio openexr \
-                   cfitsio nifticlib poppler fftw openslide libjxl cgif
+                   libjpeg-turbo tiff lcms libexif libpng \
+                   libspng libimagequant fftw openslide cgif
 
 define $(PKG)_PRE_CONFIGURE
     # Copy some files to the packaging directory
@@ -20,11 +19,9 @@ define $(PKG)_PRE_CONFIGURE
         cp '$(SOURCE_DIR)/$(f)' '$(PREFIX)/$(TARGET)/vips-packaging';)
 
     (printf '{\n'; \
-     printf '  "aom": "$(aom_VERSION)",\n'; \
      printf '  "archive": "$(libarchive_VERSION)",\n'; \
      $(if $(IS_LLVM),printf '  "brotli": "$(brotli_VERSION)"$(comma)\n';) \
      printf '  "cairo": "$(cairo_VERSION)",\n'; \
-     printf '  "cfitsio": "$(cfitsio_VERSION)",\n'; \
      printf '  "cgif": "$(cgif_VERSION)",\n'; \
      $(if $(IS_HEVC),printf '  "de265": "$(libde265_VERSION)"$(comma)\n';) \
      printf '  "dicom": "$(libdicom_VERSION)",\n'; \
@@ -38,30 +35,19 @@ define $(PKG)_PRE_CONFIGURE
      printf '  "gdkpixbuf": "$(gdk-pixbuf_VERSION)",\n'; \
      $(if $(IS_INTL_DUMMY),,printf '  "gettext": "$(gettext_VERSION)"$(comma)\n';) \
      printf '  "glib": "$(glib_VERSION)",\n'; \
-     $(if $(findstring graphicsmagick,$($(PKG)_DEPS)),printf '  "graphicsmagick": "$(graphicsmagick_VERSION)"$(comma)\n';) \
      printf '  "harfbuzz": "$(harfbuzz_VERSION)",\n'; \
-     printf '  "heif": "$(libheif_VERSION)",\n'; \
-     printf '  "highway": "$(highway_VERSION)",\n'; \
-     $(if $(findstring imagemagick,$($(PKG)_DEPS)),printf '  "imagemagick": "$(imagemagick_VERSION)"$(comma)\n';) \
      printf '  "imagequant": "$(libimagequant_VERSION)",\n'; \
      $(if $(IS_JPEGLI), \
           printf '  "jpegli": "$(jpegli_VERSION)"$(comma)\n';, \
           $(if $(IS_MOZJPEG),,printf '  "jpeg": "$(libjpeg-turbo_VERSION)"$(comma)\n';)) \
-     $(if $(IS_LLVM),printf '  "jxl": "$(libjxl_VERSION)"$(comma)\n';) \
      printf '  "lcms": "$(lcms_VERSION)",\n'; \
-     printf '  "matio": "$(matio_VERSION)",\n'; \
      $(if $(IS_MOZJPEG),printf '  "mozjpeg": "$(mozjpeg_VERSION)"$(comma)\n';) \
-     printf '  "nifti": "$(nifticlib_VERSION)",\n'; \
-     printf '  "openexr": "$(openexr_VERSION)",\n'; \
-     printf '  "openjpeg": "$(openjpeg_VERSION)",\n'; \
      printf '  "openslide": "$(openslide_VERSION)",\n'; \
      printf '  "pango": "$(pango_VERSION)",\n'; \
      printf '  "pixman": "$(pixman_VERSION)",\n'; \
      printf '  "png": "$(libpng_VERSION)",\n'; \
-     printf '  "poppler": "$(poppler_VERSION)",\n'; \
      $(if $(IS_INTL_DUMMY),printf '  "proxy-libintl": "$(proxy-libintl_VERSION)"$(comma)\n';) \
      printf '  "spng": "$(libspng_VERSION)",\n'; \
-     printf '  "sqlite": "$(sqlite_VERSION)",\n'; \
      printf '  "tiff": "$(tiff_VERSION)",\n'; \
      printf '  "vips": "$(vips-all_VERSION)",\n'; \
      printf '  "webp": "$(libwebp_VERSION)",\n'; \
@@ -85,9 +71,13 @@ define $(PKG)_BUILD
         -Dexamples=false \
         -Dintrospection=disabled \
         -Dmodules=enabled \
-        -Dheif-module=$(if $(IS_HEVC),enabled,disabled) \
-        -Djpeg-xl=$(if $(IS_LLVM),enabled,disabled) \
-        $(if $(findstring graphicsmagick,$($(PKG)_DEPS)), -Dmagick-package=GraphicsMagick) \
+        -Dheif=disabled \
+        -Djpeg-xl=disabled \
+        -Dmagick=disabled \
+        -Dmatio=disabled \
+        -Dnifti=disabled \
+        -Dopenexr=disabled \
+        -Dpoppler=disabled \
         -Dpdfium=disabled \
         -Dquantizr=disabled \
         -Dc_args='$(CFLAGS) -DVIPS_DLLDIR_AS_LIBDIR' \
