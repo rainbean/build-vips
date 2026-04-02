@@ -29,7 +29,7 @@ cd /usr/lib/${arch_triplet}/
 tar rf $target \
     libglib-2.0.so* libgobject-2.0.so* libgmodule-2.0.so* libgio-2.0.so* libexpat.so* libzstd.so* \
     libexif.so* libwebpmux.so* libwebpdemux.so* libwebp.so* libtiff.so* libcairo.so* libffi.so* \
-    libxml2.so* libjbig.so* libcairo-gobject.so* libpixman-1.so* libpng16* liblzma.so* \
+    libxml2.so* libjbig.so* libcairo-gobject.so* libpixman-1.so* libpng16* liblzma.so* libpcre.so* \
     libsqlite3.so* libbrotlidec.so* libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so*
 
 gzip $target
