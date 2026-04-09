@@ -32,7 +32,7 @@ tar rf $target \
     libxml2.so* libpng16* liblzma.so* \
     libpcre.so* libsqlite3.so* libbrotlidec.so* \
     libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so* \
-    libarchive.so* libdeflate.so* 
+    libarchive.so* libdeflate.so*
 
 tar rf $target -C /repo LICENSE THIRD-PARTY-NOTICES
 
