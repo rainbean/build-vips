@@ -13,7 +13,9 @@ docker build --platform $platform -t libvips-build-linux container
 # Run build scripts inside a container with the:
 # - correct platform for this host
 # - build dir mounted at /data
+# - repo root mounted at /repo (read-only, for LICENSE and THIRD-PARTY-NOTICES)
 docker run --rm -t \
   --platform $platform \
   -v $PWD/build:/data \
+  -v $PWD/..:/repo:ro \
   libvips-build-linux

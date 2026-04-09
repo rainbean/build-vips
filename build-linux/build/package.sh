@@ -33,4 +33,6 @@ tar rf $target \
     libgdk_pixbuf-2.0.so* libpcre.so* libsqlite3.so* libbrotlidec.so* \
     libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so*
 
+tar rf $target -C /repo LICENSE THIRD-PARTY-NOTICES
+
 gzip $target
