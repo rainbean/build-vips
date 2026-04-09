@@ -24,4 +24,4 @@ patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch"
 cp "$SCRIPT_DIR/THIRD-PARTY-NOTICES" "$BUILD_DIR/"
 
 cd "$SCRIPT_DIR/build-win64-mxe"
-./build.sh all "$@"
+./build.sh all x86_64 shared
