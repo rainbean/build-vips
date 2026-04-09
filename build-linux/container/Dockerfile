@@ -24,7 +24,6 @@ RUN apt-get update && \
 		libbrotli-dev \
 		libxml2-dev \
 		libsqlite3-dev \
-		libgdk-pixbuf2.0-dev \
 		libarchive-dev
 
 # The build dir is mounted at /data, so this runs the build script in that

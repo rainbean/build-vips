@@ -12,7 +12,6 @@ meson setup build \
     -Dintrospection=disabled \
     -Dfontconfig=disabled \
     -Dpangocairo=disabled \
-    -Dpixbuf=disabled \
     -Dpdfium=disabled \
     -Dquantizr=disabled \
     -Dmodules=disabled \
