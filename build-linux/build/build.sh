@@ -11,7 +11,7 @@ work_dir=$(pwd)
 # build each library
 deps=('cmake'
     'zlib' 'lcms' 'fftw'
-    'openjpeg' 'libspng' 'mozjpeg'
+    'openjpeg' 'libspng' 'mozjpeg' 'libtiff'
     'libdicom' 'openslide' 'libvips')
 for lib in "${deps[@]}"; do
     cd /var/tmp

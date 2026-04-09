@@ -78,6 +78,16 @@ SPDX-License-Identifier: IJG AND Zlib AND BSD-3-Clause
 https://github.com/mozilla/mozjpeg
 
 --------------------------------------------------------------------------------
+libtiff 4.7.0
+--------------------------------------------------------------------------------
+Copyright (c) 1988-1997 Sam Leffler
+Copyright (c) 1991-1997 Silicon Graphics, Inc.
+SPDX-License-Identifier: libtiff
+https://libtiff.gitlab.io/libtiff
+
+Built from source with JBIG and libdeflate disabled.
+
+--------------------------------------------------------------------------------
 OpenSlide 2025-08-22 (rainbean fork)
 --------------------------------------------------------------------------------
 Copyright (c) 2007-2023 Carnegie Mellon University and OpenSlide contributors
@@ -127,14 +137,6 @@ SPDX-License-Identifier: BSD-3-Clause
 https://chromium.googlesource.com/webm/libwebp
 
 --------------------------------------------------------------------------------
-libtiff
---------------------------------------------------------------------------------
-Copyright (c) 1988-1997 Sam Leffler
-Copyright (c) 1991-1997 Silicon Graphics, Inc.
-SPDX-License-Identifier: libtiff
-https://libtiff.gitlab.io/libtiff
-
---------------------------------------------------------------------------------
 Cairo (libcairo, libcairo-gobject)
 --------------------------------------------------------------------------------
 Copyright (c) 2004-2022 Red Hat, Inc. and Cairo contributors
@@ -154,15 +156,6 @@ libxml2
 Copyright (c) 1998-2012 Daniel Veillard
 SPDX-License-Identifier: MIT
 https://gitlab.gnome.org/GNOME/libxml2
-
---------------------------------------------------------------------------------
-jbigkit (libjbig)
---------------------------------------------------------------------------------
-Copyright (c) 1995-2022 Markus Kuhn, University of Cambridge
-SPDX-License-Identifier: GPL-2.0-or-later
-https://www.cl.cam.ac.uk/~mgk25/jbigkit/
-
-This library is bundled as a transitive dependency of libtiff.
 
 --------------------------------------------------------------------------------
 Pixman (libpixman-1)
