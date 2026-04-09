@@ -1,0 +1,18 @@
+--- a/build-win64-mxe/build/openslide.mk
++++ b/build-win64-mxe/build/openslide.mk
+@@ -2,11 +2,11 @@
+ $(PKG)_WEBSITE  := https://openslide.org/
+ $(PKG)_DESCR    := C library for reading virtual slide images.
+ $(PKG)_IGNORE   :=
+-$(PKG)_VERSION  := 4.0.0
+-$(PKG)_CHECKSUM := cc227c44316abb65fb28f1c967706eb7254f91dbfab31e9ae6a48db6cf4ae562
++$(PKG)_VERSION  := 2025-08-22
++$(PKG)_CHECKSUM := 424e52a423ac3124f97a4fd578924c0ec5d2d109bf929f8043940780bae9b7c8
+ $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
+-$(PKG)_GH_CONF  := openslide/openslide/releases,v,,,,.tar.xz
+-$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom
++$(PKG)_GH_CONF  := rainbean/openslide/tags
++$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom zstd
+ 
+ define $(PKG)_BUILD
+     $(MXE_MESON_WRAPPER) \
