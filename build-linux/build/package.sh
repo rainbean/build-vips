@@ -21,17 +21,18 @@ tar rf $target liblcms2.so* libspng.so* libvips-cpp.so* libvips.so* libdicom.so*
 # fix wrong symbolic link path
 cd /usr/lib/${arch_triplet}/
 rm -f libexpat.so
-ln -s libexpat.so.1.6.11 libexpat.so
+ln -s libexpat.so.1 libexpat.so
 rm -f liblzma.so
-ln -s liblzma.so.5.2.4 liblzma.so
+ln -s liblzma.so.5 liblzma.so
 
 cd /usr/lib/${arch_triplet}/
 tar rf $target \
     libglib-2.0.so* libgobject-2.0.so* libgmodule-2.0.so* libgio-2.0.so* libexpat.so* libzstd.so* \
-    libexif.so* libwebpmux.so* libwebpdemux.so* libwebp.so* libcairo.so* libffi.so* \
-    libxml2.so* libcairo-gobject.so* libpixman-1.so* libpng16* liblzma.so* \
-    libgdk_pixbuf-2.0.so* libpcre.so* libsqlite3.so* libbrotlidec.so* \
-    libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so*
+    libexif.so* libwebpmux.so* libwebpdemux.so* libwebp.so* libffi.so* \
+    libxml2.so* libpng16* liblzma.so* \
+    libpcre.so* libsqlite3.so* libbrotlidec.so* \
+    libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so* \
+    libarchive.so* libdeflate.so* 
 
 tar rf $target -C /repo LICENSE THIRD-PARTY-NOTICES
 

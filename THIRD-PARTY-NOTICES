@@ -126,13 +126,6 @@ SPDX-License-Identifier: BSD-3-Clause
 https://chromium.googlesource.com/webm/libwebp
 
 --------------------------------------------------------------------------------
-Cairo (libcairo, libcairo-gobject)
---------------------------------------------------------------------------------
-Copyright (c) 2004-2022 Red Hat, Inc. and Cairo contributors
-SPDX-License-Identifier: LGPL-2.1-or-later
-https://cairographics.org
-
---------------------------------------------------------------------------------
 libffi
 --------------------------------------------------------------------------------
 Copyright (c) 1996-2022 Anthony Green, Red Hat Inc., and libffi contributors
@@ -145,16 +138,6 @@ libxml2
 Copyright (c) 1998-2012 Daniel Veillard
 SPDX-License-Identifier: MIT
 https://gitlab.gnome.org/GNOME/libxml2
-
---------------------------------------------------------------------------------
-Pixman (libpixman-1)
---------------------------------------------------------------------------------
-Copyright (c) 2000 SuSE, Inc.
-Copyright (c) 2004 Red Hat, Inc.
-Copyright (c) 2007 Luca Barbato
-Copyright (c) 2007-2022 Pixman contributors
-SPDX-License-Identifier: MIT
-https://gitlab.freedesktop.org/pixman/pixman
 
 --------------------------------------------------------------------------------
 libpng
@@ -175,14 +158,6 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 https://tukaani.org/xz/
 
 Some components are in the public domain; see the XZ Utils COPYING file.
-
---------------------------------------------------------------------------------
-GDK-Pixbuf (libgdk_pixbuf-2.0)
---------------------------------------------------------------------------------
-Copyright (c) 1999-2003 The Free Software Foundation
-Copyright (c) 2003-2022 GDK-Pixbuf contributors
-SPDX-License-Identifier: LGPL-2.1-or-later
-https://gitlab.gnome.org/GNOME/gdk-pixbuf
 
 --------------------------------------------------------------------------------
 PCRE (libpcre)

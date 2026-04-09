@@ -1,6 +1,6 @@
 --- a/build-win64-mxe/build/vips-all.mk
 +++ b/build-win64-mxe/build/vips-all.mk
-@@ -5,26 +5,24 @@
+@@ -5,26 +5,23 @@
  $(PKG)_VERSION  := 8.15.2
  $(PKG)_CHECKSUM := a2ab15946776ca7721d11cae3215f20f1f097b370ff580cd44fc0f19387aee84
  $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/vips-[0-9]*.patch)))
@@ -12,7 +12,7 @@
 -                   libjpeg-turbo tiff lcms libexif libheif libpng \
 -                   libspng libimagequant highway imagemagick matio openexr \
 -                   cfitsio nifticlib poppler fftw openslide libjxl cgif
-+$(PKG)_DEPS     := cc meson-wrapper libwebp glib pango libarchive \
++$(PKG)_DEPS     := cc meson-wrapper libwebp glib libarchive \
 +                   libjpeg-turbo tiff lcms libexif libpng \
 +                   libspng libimagequant fftw openslide cgif
  
@@ -27,13 +27,19 @@
 -     printf '  "aom": "$(aom_VERSION)",\n'; \
       printf '  "archive": "$(libarchive_VERSION)",\n'; \
       $(if $(IS_LLVM),printf '  "brotli": "$(brotli_VERSION)"$(comma)\n';) \
-      printf '  "cairo": "$(cairo_VERSION)",\n'; \
+-     printf '  "cairo": "$(cairo_VERSION)",\n'; \
 -     printf '  "cfitsio": "$(cfitsio_VERSION)",\n'; \
       printf '  "cgif": "$(cgif_VERSION)",\n'; \
       $(if $(IS_HEVC),printf '  "de265": "$(libde265_VERSION)"$(comma)\n';) \
       printf '  "dicom": "$(libdicom_VERSION)",\n'; \
-@@ -38,31 +36,19 @@
-      printf '  "gdkpixbuf": "$(gdk-pixbuf_VERSION)",\n'; \
+@@ -32,37 +29,22 @@
+      printf '  "expat": "$(expat_VERSION)",\n'; \
+      printf '  "ffi": "$(libffi_VERSION)",\n'; \
+      printf '  "fftw": "$(fftw_VERSION)",\n'; \
+-     printf '  "fontconfig": "$(fontconfig_VERSION)",\n'; \
+      printf '  "freetype": "$(freetype_VERSION)",\n'; \
+      printf '  "fribidi": "$(fribidi_VERSION)",\n'; \
+-     printf '  "gdkpixbuf": "$(gdk-pixbuf_VERSION)",\n'; \
       $(if $(IS_INTL_DUMMY),,printf '  "gettext": "$(gettext_VERSION)"$(comma)\n';) \
       printf '  "glib": "$(glib_VERSION)",\n'; \
 -     $(if $(findstring graphicsmagick,$($(PKG)_DEPS)),printf '  "graphicsmagick": "$(graphicsmagick_VERSION)"$(comma)\n';) \
@@ -45,7 +51,7 @@
       $(if $(IS_JPEGLI), \
            printf '  "jpegli": "$(jpegli_VERSION)"$(comma)\n';, \
            $(if $(IS_MOZJPEG),,printf '  "jpeg": "$(libjpeg-turbo_VERSION)"$(comma)\n';)) \
--     $(if $(IS_LLVM),printf '  "jxl": "$(libjxl_VERSION)"$(comma)\n';) \
+      $(if $(IS_LLVM),printf '  "jxl": "$(libjxl_VERSION)"$(comma)\n';) \
       printf '  "lcms": "$(lcms_VERSION)",\n'; \
 -     printf '  "matio": "$(matio_VERSION)",\n'; \
       $(if $(IS_MOZJPEG),printf '  "mozjpeg": "$(mozjpeg_VERSION)"$(comma)\n';) \
@@ -53,8 +59,8 @@
 -     printf '  "openexr": "$(openexr_VERSION)",\n'; \
 -     printf '  "openjpeg": "$(openjpeg_VERSION)",\n'; \
       printf '  "openslide": "$(openslide_VERSION)",\n'; \
-      printf '  "pango": "$(pango_VERSION)",\n'; \
-      printf '  "pixman": "$(pixman_VERSION)",\n'; \
+-     printf '  "pango": "$(pango_VERSION)",\n'; \
+-     printf '  "pixman": "$(pixman_VERSION)",\n'; \
       printf '  "png": "$(libpng_VERSION)",\n'; \
 -     printf '  "poppler": "$(poppler_VERSION)",\n'; \
       $(if $(IS_INTL_DUMMY),printf '  "proxy-libintl": "$(proxy-libintl_VERSION)"$(comma)\n';) \
@@ -64,13 +70,16 @@
       printf '  "tiff": "$(tiff_VERSION)",\n'; \
       printf '  "vips": "$(vips-all_VERSION)",\n'; \
       printf '  "webp": "$(libwebp_VERSION)",\n'; \
-@@ -86,9 +72,13 @@
+@@ -86,9 +68,16 @@
          -Dexamples=false \
          -Dintrospection=disabled \
          -Dmodules=enabled \
 -        -Dheif-module=$(if $(IS_HEVC),enabled,disabled) \
 -        -Djpeg-xl=$(if $(IS_LLVM),enabled,disabled) \
 -        $(if $(findstring graphicsmagick,$($(PKG)_DEPS)), -Dmagick-package=GraphicsMagick) \
++        -Dfontconfig=disabled \
++        -Dpangocairo=disabled \
++        -Dpixbuf=disabled \
 +        -Dheif=disabled \
 +        -Djpeg-xl=disabled \
 +        -Dmagick=disabled \
