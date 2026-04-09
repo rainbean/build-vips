@@ -23,6 +23,7 @@ meson setup build \
     -Djpeg-xl=disabled \
     -Dmagick=disabled \
     -Dopenexr=disabled \
+    -Dfftw=disabled \
     -Dmatio=disabled \
     -Dcfitsio=disabled \
     -Dpoppler=disabled \

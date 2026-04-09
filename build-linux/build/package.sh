@@ -13,7 +13,7 @@ cd /usr/local/bin
 tar cf $target vips vipsheader
 
 cd /usr/local/lib
-tar rf $target libopenjp2* libjpeg.so* libfftw3.so* libtiff.so*
+tar rf $target libopenjp2* libjpeg.so* libtiff.so*
 
 cd /usr/local/lib/${arch_triplet}
 tar rf $target liblcms2.so* libspng.so* libvips-cpp.so* libvips.so* libdicom.so* libopenslide.so*

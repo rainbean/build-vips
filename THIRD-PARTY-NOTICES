@@ -27,17 +27,6 @@ SPDX-License-Identifier: Zlib
 https://github.com/zlib-ng/zlib-ng
 
 --------------------------------------------------------------------------------
-FFTW 3.3.10
---------------------------------------------------------------------------------
-Copyright (c) 2003, 2007-2011 Matteo Frigo
-Copyright (c) 2003, 2007-2011 Massachusetts Institute of Technology
-SPDX-License-Identifier: GPL-2.0-or-later
-https://fftw.org
-
-A commercial license is available from the FFTW authors for use in
-non-GPL software; see https://fftw.org/fftw-license.html for details.
-
---------------------------------------------------------------------------------
 Little CMS (lcms2) 2.16
 --------------------------------------------------------------------------------
 Copyright (c) 1998-2024 Marti Maria Saguer
