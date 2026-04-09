@@ -1,0 +1,10 @@
+--- a/build-win64-mxe/build/vips-web.mk
++++ b/build-win64-mxe/build/vips-web.mk
+@@ -17,6 +17,7 @@
+     mkdir -p $(PREFIX)/$(TARGET)/vips-packaging
+     $(foreach f, ChangeLog LICENSE README.md, \
+         cp '$(SOURCE_DIR)/$(f)' '$(PREFIX)/$(TARGET)/vips-packaging';)
++    cp '/data/THIRD-PARTY-NOTICES' '$(PREFIX)/$(TARGET)/vips-packaging'
+ 
+     (printf '{\n'; \
+      printf '  "aom": "$(aom_VERSION)",\n'; \
