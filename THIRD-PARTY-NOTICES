@@ -1,0 +1,271 @@
+This distribution includes precompiled third-party libraries. Each library
+retains its own copyright and license. Licenses are identified using SPDX
+identifiers (https://spdx.org/licenses/).
+
+LGPL-licensed libraries are distributed as shared objects (.so / .dll).
+End users may replace them with modified versions without affecting the
+rest of the distribution.
+
+================================================================================
+LINUX DISTRIBUTION
+Libraries built from source (build-linux/build/*.sh)
+================================================================================
+
+--------------------------------------------------------------------------------
+libvips 8.15.2
+--------------------------------------------------------------------------------
+Copyright (c) 1989-2023 The National Gallery and libvips contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://github.com/libvips/libvips
+
+--------------------------------------------------------------------------------
+zlib-ng 2.1.4
+--------------------------------------------------------------------------------
+Copyright (c) 2017-2024 Hans Kristian Rosbach and zlib-ng contributors
+Copyright (c) 1995-2017 Jean-loup Gailly and Mark Adler
+SPDX-License-Identifier: Zlib
+https://github.com/zlib-ng/zlib-ng
+
+--------------------------------------------------------------------------------
+FFTW 3.3.10
+--------------------------------------------------------------------------------
+Copyright (c) 2003, 2007-2011 Matteo Frigo
+Copyright (c) 2003, 2007-2011 Massachusetts Institute of Technology
+SPDX-License-Identifier: GPL-2.0-or-later
+https://fftw.org
+
+A commercial license is available from the FFTW authors for use in
+non-GPL software; see https://fftw.org/fftw-license.html for details.
+
+--------------------------------------------------------------------------------
+Little CMS (lcms2) 2.16
+--------------------------------------------------------------------------------
+Copyright (c) 1998-2024 Marti Maria Saguer
+SPDX-License-Identifier: MIT
+https://github.com/mm2/Little-CMS
+
+--------------------------------------------------------------------------------
+libdicom 1.0.5
+--------------------------------------------------------------------------------
+Copyright (c) 2021-2023 ImagingDataCommons contributors, Google LLC,
+  and Massachusetts General Hospital
+SPDX-License-Identifier: MIT
+https://github.com/ImagingDataCommons/libdicom
+
+--------------------------------------------------------------------------------
+libspng 0.7.4
+--------------------------------------------------------------------------------
+Copyright (c) 2018-2023 Randy408 and libspng contributors
+SPDX-License-Identifier: BSD-2-Clause
+https://github.com/randy408/libspng
+
+--------------------------------------------------------------------------------
+OpenJPEG 2.5.2
+--------------------------------------------------------------------------------
+Copyright (c) 2002-2014 Universite catholique de Louvain (UCL), Belgium
+Copyright (c) 2002-2014 UCL -- Universite Catholique de Louvain
+Copyright (c) 2012 OpenJPEG contributors
+SPDX-License-Identifier: BSD-2-Clause
+https://github.com/uclouvain/openjpeg
+
+--------------------------------------------------------------------------------
+mozjpeg 4.1.5
+--------------------------------------------------------------------------------
+Copyright (c) 1991-2013 Thomas G. Lane, Guido Vollbeding (IJG)
+Copyright (c) 2009-2023 D. R. Commander and libjpeg-turbo contributors
+Copyright (c) 2014-2023 Mozilla Foundation
+SPDX-License-Identifier: IJG AND Zlib AND BSD-3-Clause
+https://github.com/mozilla/mozjpeg
+
+--------------------------------------------------------------------------------
+OpenSlide 2025-08-22 (rainbean fork)
+--------------------------------------------------------------------------------
+Copyright (c) 2007-2023 Carnegie Mellon University and OpenSlide contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://github.com/rainbean/openslide
+
+================================================================================
+LINUX DISTRIBUTION
+System libraries bundled from Ubuntu 22.04 LTS (Jammy)
+================================================================================
+
+--------------------------------------------------------------------------------
+GLib (libglib-2.0, libgobject-2.0, libgmodule-2.0, libgio-2.0)
+--------------------------------------------------------------------------------
+Copyright (c) 1995-2022 Peter Mattis, Spencer Kimball, Josh MacDonald,
+  and the GLib/GTK+ team
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://gitlab.gnome.org/GNOME/glib
+
+--------------------------------------------------------------------------------
+Expat (libexpat)
+--------------------------------------------------------------------------------
+Copyright (c) 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper
+Copyright (c) 2001-2022 Expat maintainers
+SPDX-License-Identifier: MIT
+https://github.com/libexpat/libexpat
+
+--------------------------------------------------------------------------------
+Zstandard (libzstd)
+--------------------------------------------------------------------------------
+Copyright (c) 2016-present Facebook, Inc.
+SPDX-License-Identifier: BSD-3-Clause
+https://github.com/facebook/zstd
+
+--------------------------------------------------------------------------------
+libexif
+--------------------------------------------------------------------------------
+Copyright (c) 2001-2024 The libexif authors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://libexif.github.io
+
+--------------------------------------------------------------------------------
+libwebp (libwebp, libwebpmux, libwebpdemux)
+--------------------------------------------------------------------------------
+Copyright (c) 2010-2024 Google LLC
+SPDX-License-Identifier: BSD-3-Clause
+https://chromium.googlesource.com/webm/libwebp
+
+--------------------------------------------------------------------------------
+libtiff
+--------------------------------------------------------------------------------
+Copyright (c) 1988-1997 Sam Leffler
+Copyright (c) 1991-1997 Silicon Graphics, Inc.
+SPDX-License-Identifier: libtiff
+https://libtiff.gitlab.io/libtiff
+
+--------------------------------------------------------------------------------
+Cairo (libcairo, libcairo-gobject)
+--------------------------------------------------------------------------------
+Copyright (c) 2004-2022 Red Hat, Inc. and Cairo contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://cairographics.org
+
+--------------------------------------------------------------------------------
+libffi
+--------------------------------------------------------------------------------
+Copyright (c) 1996-2022 Anthony Green, Red Hat Inc., and libffi contributors
+SPDX-License-Identifier: MIT
+https://github.com/libffi/libffi
+
+--------------------------------------------------------------------------------
+libxml2
+--------------------------------------------------------------------------------
+Copyright (c) 1998-2012 Daniel Veillard
+SPDX-License-Identifier: MIT
+https://gitlab.gnome.org/GNOME/libxml2
+
+--------------------------------------------------------------------------------
+jbigkit (libjbig)
+--------------------------------------------------------------------------------
+Copyright (c) 1995-2022 Markus Kuhn, University of Cambridge
+SPDX-License-Identifier: GPL-2.0-or-later
+https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+
+This library is bundled as a transitive dependency of libtiff.
+
+--------------------------------------------------------------------------------
+Pixman (libpixman-1)
+--------------------------------------------------------------------------------
+Copyright (c) 2000 SuSE, Inc.
+Copyright (c) 2004 Red Hat, Inc.
+Copyright (c) 2007 Luca Barbato
+Copyright (c) 2007-2022 Pixman contributors
+SPDX-License-Identifier: MIT
+https://gitlab.freedesktop.org/pixman/pixman
+
+--------------------------------------------------------------------------------
+libpng
+--------------------------------------------------------------------------------
+Copyright (c) 1995-2024 The PNG Reference Library Authors
+Copyright (c) 2018-2024 Cosmin Truta
+Copyright (c) 2000-2002, 2004, 2006-2018 Glenn Randers-Pehrson
+Copyright (c) 1996-1997 Andreas Dilger
+Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+SPDX-License-Identifier: libpng-2.0
+http://www.libpng.org/pub/png/libpng.html
+
+--------------------------------------------------------------------------------
+XZ Utils (liblzma)
+--------------------------------------------------------------------------------
+Copyright (c) 2007-2024 Lasse Collin and XZ Utils contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://tukaani.org/xz/
+
+Some components are in the public domain; see the XZ Utils COPYING file.
+
+--------------------------------------------------------------------------------
+GDK-Pixbuf (libgdk_pixbuf-2.0)
+--------------------------------------------------------------------------------
+Copyright (c) 1999-2003 The Free Software Foundation
+Copyright (c) 2003-2022 GDK-Pixbuf contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://gitlab.gnome.org/GNOME/gdk-pixbuf
+
+--------------------------------------------------------------------------------
+PCRE (libpcre)
+--------------------------------------------------------------------------------
+Copyright (c) 1997-2020 University of Cambridge
+SPDX-License-Identifier: BSD-3-Clause
+https://www.pcre.org
+
+--------------------------------------------------------------------------------
+SQLite (libsqlite3)
+--------------------------------------------------------------------------------
+SQLite is in the public domain. No copyright is claimed.
+SPDX-License-Identifier: blessing
+https://sqlite.org
+
+--------------------------------------------------------------------------------
+Brotli (libbrotlidec, libbrotlicommon, libbrotlienc)
+--------------------------------------------------------------------------------
+Copyright (c) 2009-2015 Google Inc.
+SPDX-License-Identifier: MIT
+https://github.com/google/brotli
+
+--------------------------------------------------------------------------------
+ICU — International Components for Unicode (libicuuc, libicudata)
+--------------------------------------------------------------------------------
+Copyright (c) 1991-2023 Unicode, Inc.
+SPDX-License-Identifier: Unicode-3.0
+https://icu.unicode.org
+
+================================================================================
+WINDOWS DISTRIBUTION (patches applied from patch/)
+================================================================================
+
+The Windows build uses the build-win64-mxe submodule (https://github.com/libvips/build-win64-mxe).
+This repository contributes version overrides for two packages via patch/:
+
+--------------------------------------------------------------------------------
+libvips 8.15.2 (Windows)
+--------------------------------------------------------------------------------
+Copyright (c) 1989-2023 The National Gallery and libvips contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://github.com/libvips/libvips
+
+--------------------------------------------------------------------------------
+OpenSlide 2025-08-22 (Windows, rainbean fork)
+--------------------------------------------------------------------------------
+Copyright (c) 2007-2023 Carnegie Mellon University and OpenSlide contributors
+SPDX-License-Identifier: LGPL-2.1-or-later
+https://github.com/rainbean/openslide
+
+All other Windows dependencies (cairo, cgif, fontconfig, freetype, GLib,
+harfbuzz, highway, lcms, libarchive, libexif, libffi, libheif, libimagequant,
+libpng, mozjpeg/jpegli, pango, pixman, libspng, libtiff, libwebp, libxml2,
+zlib-ng; and vips-all extras: brotli, cfitsio, fftw, imagemagick, imath,
+libdicom, libjxl, matio, nifticlib, openexr, openjpeg, poppler) are
+versioned and attributed in build-win64-mxe/build/overrides.mk and the
+accompanying README in the upstream submodule.
+
+================================================================================
+BUILD-TIME DEPENDENCIES (not bundled in the distribution)
+================================================================================
+
+--------------------------------------------------------------------------------
+CMake 3.28.6 — Linux build dependency
+--------------------------------------------------------------------------------
+CMake is NOT bundled in this distribution. It is installed inside the Docker
+build container at build time and is subject to the BSD-3-Clause license.
+https://cmake.org
