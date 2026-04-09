@@ -19,6 +19,7 @@ trap cleanup EXIT
 # Apply local patches over the submodule files
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-web.mk.patch"
+cp "$SCRIPT_DIR/patch"/*.mk "$BUILD_DIR/"
 
 # Stage license file so the container can reach it at /data/
 cp "$SCRIPT_DIR/THIRD-PARTY-NOTICES" "$BUILD_DIR/"
