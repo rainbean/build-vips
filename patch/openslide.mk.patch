@@ -6,8 +6,8 @@
  $(PKG)_IGNORE   :=
 -$(PKG)_VERSION  := 4.0.0
 -$(PKG)_CHECKSUM := cc227c44316abb65fb28f1c967706eb7254f91dbfab31e9ae6a48db6cf4ae562
-+$(PKG)_VERSION  := 2025-08-22
-+$(PKG)_CHECKSUM := 424e52a423ac3124f97a4fd578924c0ec5d2d109bf929f8043940780bae9b7c8
++$(PKG)_VERSION  := 2026-04-13
++$(PKG)_CHECKSUM := 8918dd1f2e6ce2140c90c8dfc8a7a966e082e4f5fa946a4c7ab67b362a0416f5
  $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
 -$(PKG)_GH_CONF  := openslide/openslide/releases,v,,,,.tar.xz
 -$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom
