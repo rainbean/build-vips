@@ -13,6 +13,7 @@ cleanup() {
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch" 2>/dev/null || true
+    patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/libdicom.mk.patch" 2>/dev/null || true
     rm -f "$BUILD_DIR/THIRD-PARTY-NOTICES"
 }
 trap cleanup EXIT
@@ -21,6 +22,7 @@ trap cleanup EXIT
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch"
+patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/libdicom.mk.patch"
 
 # Stage license file so the container can reach it at /data/
 cp "$SCRIPT_DIR/THIRD-PARTY-NOTICES" "$BUILD_DIR/"
