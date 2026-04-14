@@ -1,0 +1,15 @@
+--- a/build-win64-mxe/build/vips.mk
++++ b/build-win64-mxe/build/vips.mk
+@@ -10,9 +10,9 @@
+ $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
+ $(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
+ $(PKG)_SUBDIR   := $(PKG)-$(firstword $(subst -, ,$($(PKG)_VERSION)))
+-$(PKG)_DEPS     := cc meson-wrapper libwebp librsvg glib pango libarchive \
+-                   libjpeg-turbo tiff lcms libexif libheif \
+-                   libimagequant highway cgif uhdr
++$(PKG)_DEPS     := cc meson-wrapper libwebp glib libarchive \
++                   libjpeg-turbo tiff lcms libexif \
++                   libimagequant cgif
+
+ define $(PKG)_BUILD
+     $(eval export CFLAGS += -O3)

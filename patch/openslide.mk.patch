@@ -12,7 +12,7 @@
 -$(PKG)_GH_CONF  := openslide/openslide/releases,v,,,,.tar.xz
 -$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom
 +$(PKG)_GH_CONF  := rainbean/openslide/tags
-+$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom zstd
++$(PKG)_DEPS     := cc zlib glib libxml2 cairo libjpeg-turbo tiff openjpeg sqlite libdicom zstd
  
  define $(PKG)_BUILD
      $(MXE_MESON_WRAPPER) \

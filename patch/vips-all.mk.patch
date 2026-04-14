@@ -1,43 +1,19 @@
---- a/build-win64-mxe/build/vips-all.mk
-+++ b/build-win64-mxe/build/vips-all.mk
-@@ -8,16 +8,16 @@
--$(PKG)_GH_CONF  := libvips/libvips/releases,v,a,,,.tar.xz
-+$(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
- $(PKG)_SUBDIR   := vips-$($(PKG)_VERSION)
- $(PKG)_FILE     := vips-$($(PKG)_VERSION).tar.xz
--$(PKG)_DEPS     := cc meson-wrapper libwebp librsvg glib pango libarchive \
--                   libjpeg-turbo tiff lcms libexif libheif libpng \
--                   libspng libimagequant highway imagemagick matio openexr \
--                   cfitsio nifticlib poppler fftw openslide libjxl cgif
-+$(PKG)_DEPS     := cc meson-wrapper libwebp glib libarchive \
-+                   libjpeg-turbo tiff lcms libexif libpng \
-+                   libspng libimagequant fftw openslide cgif
- 
+--- a/build-win64-mxe/build/plugins/all-deps/vips-all.mk
++++ b/build-win64-mxe/build/plugins/all-deps/vips-all.mk
+@@ -8,14 +8,14 @@
+ $(PKG)_SUBDIR    = $(vips_SUBDIR)
+ $(PKG)_FILE      = $(vips_FILE)
+ $(PKG)_URL       = $(vips_URL)
+-$(PKG)_DEPS     := $(vips_DEPS) imagemagick matio openexr cfitsio \
+-                   nifticlib poppler fftw openslide libjxl libraw
++$(PKG)_DEPS     := $(vips_DEPS) fftw openslide
+
  define $(PKG)_PRE_CONFIGURE
      # Copy some files to the packaging directory
-     mkdir -p $(PREFIX)/$(TARGET)/vips-packaging
+     mkdir -p '$(PREFIX)/$(TARGET)/vips-packaging'
      $(foreach f, ChangeLog LICENSE README.md, \
          cp '$(SOURCE_DIR)/$(f)' '$(PREFIX)/$(TARGET)/vips-packaging';)
 +    cp '/data/THIRD-PARTY-NOTICES' '$(PREFIX)/$(TARGET)/vips-packaging'
- 
+
      (printf '{\n'; \
       printf '  "aom": "$(aom_VERSION)",\n'; \
-@@ -86,9 +86,15 @@
-         -Dexamples=false \
-         -Dintrospection=disabled \
-         -Dmodules=enabled \
--        -Dheif-module=$(if $(IS_HEVC),enabled,disabled) \
--        -Djpeg-xl=$(if $(IS_LLVM),enabled,disabled) \
--        $(if $(findstring graphicsmagick,$($(PKG)_DEPS)), -Dmagick-package=GraphicsMagick) \
-+        -Dfontconfig=disabled \
-+        -Dpangocairo=disabled \
-+        -Dheif=disabled \
-+        -Djpeg-xl=disabled \
-+        -Dmagick=disabled \
-+        -Dmatio=disabled \
-+        -Dnifti=disabled \
-+        -Dopenexr=disabled \
-+        -Dpoppler=disabled \
-         -Dpdfium=disabled \
-         -Dquantizr=disabled \
-         -Dc_args='$(CFLAGS) -DVIPS_DLLDIR_AS_LIBDIR' \
