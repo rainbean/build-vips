@@ -22,7 +22,7 @@
  
      (printf '{\n'; \
       printf '  "aom": "$(aom_VERSION)",\n'; \
-@@ -86,9 +86,16 @@
+@@ -86,9 +86,15 @@
          -Dexamples=false \
          -Dintrospection=disabled \
          -Dmodules=enabled \
