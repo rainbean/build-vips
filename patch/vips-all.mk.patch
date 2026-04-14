@@ -1,7 +1,8 @@
 --- a/build-win64-mxe/build/vips-all.mk
 +++ b/build-win64-mxe/build/vips-all.mk
 @@ -8,16 +8,16 @@
- $(PKG)_GH_CONF  := libvips/libvips/releases,v,a,,,.tar.xz
+-$(PKG)_GH_CONF  := libvips/libvips/releases,v,a,,,.tar.xz
++$(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
  $(PKG)_SUBDIR   := vips-$($(PKG)_VERSION)
  $(PKG)_FILE     := vips-$($(PKG)_VERSION).tar.xz
 -$(PKG)_DEPS     := cc meson-wrapper libwebp librsvg glib pango libarchive \
@@ -30,7 +31,6 @@
 -        $(if $(findstring graphicsmagick,$($(PKG)_DEPS)), -Dmagick-package=GraphicsMagick) \
 +        -Dfontconfig=disabled \
 +        -Dpangocairo=disabled \
-+        -Dpixbuf=disabled \
 +        -Dheif=disabled \
 +        -Djpeg-xl=disabled \
 +        -Dmagick=disabled \
