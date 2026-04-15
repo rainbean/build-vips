@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Build libvips"
-VIPS_VERSION=8.18.2
-wget -q https://github.com/libvips/libvips/releases/download/v${VIPS_VERSION}/vips-${VIPS_VERSION}.tar.xz -O vips.tar.xz
+VIPS_VERSION=8.15.5
+if [[ -f "/data/cache/vips-${VIPS_VERSION}.tar.xz" ]]; then cp /data/cache/vips-${VIPS_VERSION}.tar.xz vips.tar.xz; else wget -q https://github.com/libvips/libvips/releases/download/v${VIPS_VERSION}/vips-${VIPS_VERSION}.tar.xz -O vips.tar.xz; fi
 tar xf vips.tar.xz
 cd vips-${VIPS_VERSION}
 meson setup build \

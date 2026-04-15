@@ -2,7 +2,7 @@
 
 echo "Build libtiff"
 TIFF_VERSION=4.7.0
-wget -q https://download.osgeo.org/libtiff/tiff-${TIFF_VERSION}.tar.gz -O libtiff.tar.gz
+if [[ -f "/data/cache/libtiff.tar.gz" ]]; then cp /data/cache/libtiff.tar.gz .; else wget -q https://download.osgeo.org/libtiff/tiff-${TIFF_VERSION}.tar.gz -O libtiff.tar.gz; fi
 tar xf libtiff.tar.gz
 cd tiff-${TIFF_VERSION}
 cmake -Bbuild -H. \

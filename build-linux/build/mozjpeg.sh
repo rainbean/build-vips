@@ -2,7 +2,7 @@
 
 echo "Build mozjpeg"
 MOZJPEG_VERSION=4.1.5
-wget -q https://github.com/mozilla/mozjpeg/archive/refs/tags/v${MOZJPEG_VERSION}.tar.gz -O mozjpeg.tar.gz
+if [[ -f "/data/cache/mozjpeg.tar.gz" ]]; then cp /data/cache/mozjpeg.tar.gz .; else wget -q https://github.com/mozilla/mozjpeg/archive/refs/tags/v${MOZJPEG_VERSION}.tar.gz -O mozjpeg.tar.gz; fi
 tar xf mozjpeg.tar.gz
 cd mozjpeg-${MOZJPEG_VERSION}
 cmake -Bbuild -H. \

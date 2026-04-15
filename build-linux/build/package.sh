@@ -36,4 +36,4 @@ tar rf $target \
 
 tar rf $target -C /repo LICENSE THIRD-PARTY-NOTICES
 
-gzip $target
+gzip -f $target
