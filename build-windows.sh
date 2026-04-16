@@ -10,6 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR="$SCRIPT_DIR/build-win64-mxe/build"
 
 cleanup() {
+    patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch" 2>/dev/null || true
@@ -19,6 +20,7 @@ cleanup() {
 trap cleanup EXIT
 
 # Apply local patches over the submodule files
+patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch"

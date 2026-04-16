@@ -1,6 +1,12 @@
 --- a/build-win64-mxe/build/vips.mk
 +++ b/build-win64-mxe/build/vips.mk
-@@ -10,9 +10,9 @@
+@@ -3,10 +3,10 @@
+ $(PKG)_DESCR    := A fast image processing library with low memory needs.
+ $(PKG)_IGNORE   :=
+-$(PKG)_VERSION  := 8.18.2
+-$(PKG)_CHECKSUM := a30d4aede16f1c2899c1a2241870f8a7409feafa38484bcdcdac113d6d6f8ff5
++$(PKG)_VERSION  := 8.15.5
++$(PKG)_CHECKSUM := 2046d2001e60955dc6a85b82afbd6cadc8c34e10ba2f6e5ea09f03fc69eb2603
  $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
  $(PKG)_GH_CONF  := libvips/libvips/releases,v,,,,.tar.xz
  $(PKG)_SUBDIR   := $(PKG)-$(firstword $(subst -, ,$($(PKG)_VERSION)))
@@ -10,6 +16,3 @@
 +$(PKG)_DEPS     := cc meson-wrapper libwebp glib libarchive \
 +                   libjpeg-turbo tiff lcms libexif \
 +                   libimagequant cgif
-
- define $(PKG)_BUILD
-     $(eval export CFLAGS += -O3)
