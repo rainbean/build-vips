@@ -1,28 +1,31 @@
 #!/usr/bin/env bash
 
-# Apply patches over the submodule, then delegate to the submodule build
-# script.  Everything is restored on exit.
-#
-# Submodule is pinned to build-win64-mxe v8.15.5 to match the libvips
-# version pin (8.16.0+ has a ~2x WSI conversion regression).
-# See: https://github.com/rainbean/build-vips/issues/7
-#
-# Usage: ./build-windows.sh [DEPS] [ARCH] [TYPE]
-#   DEPS: web (default from submodule) or all  — we default to "all"
-#   ARCH: x86_64 (default), i686, aarch64
-#   TYPE: shared (default), static
+# Apply patches over the submodule, stage license files into the build
+# directory so the container can reach them at /data/, then delegate to
+# the submodule build script.  Everything is restored on exit.
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+BUILD_DIR="$SCRIPT_DIR/build-win64-mxe/build"
 
 cleanup() {
+    patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch" 2>/dev/null || true
     patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch" 2>/dev/null || true
+    patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch" 2>/dev/null || true
+    patch -p1 -R --quiet -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/libdicom.mk.patch" 2>/dev/null || true
+    rm -f "$BUILD_DIR/THIRD-PARTY-NOTICES"
 }
 trap cleanup EXIT
 
 # Apply local patches over the submodule files
+patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/vips-all.mk.patch"
 patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/openslide.mk.patch"
+patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/mozjpeg.mk.patch"
+patch -p1 -d "$SCRIPT_DIR" < "$SCRIPT_DIR/patch/libdicom.mk.patch"
+
+# Stage license file so the container can reach it at /data/
+cp "$SCRIPT_DIR/THIRD-PARTY-NOTICES" "$BUILD_DIR/"
 
 cd "$SCRIPT_DIR/build-win64-mxe"
-./build.sh "${@:-all}"
+./build.sh all x86_64 shared
