@@ -31,12 +31,10 @@ at build time by `build-windows.sh`. To update a patch after changing the
 target behaviour, regenerate it against the submodule original:
 
 ```shell
-diff -u \
-  --label a/build-win64-mxe/build/<file>.mk \
-  --label b/build-win64-mxe/build/<file>.mk \
-  <(cd build-win64-mxe && git show HEAD:build/<file>.mk) \
-  build-win64-mxe/build/<file>.mk \
-  > patch/<file>.mk.patch
+git -C build-win64-mxe diff \
+  --src-prefix=a/build-win64-mxe/ \
+  --dst-prefix=b/build-win64-mxe/ \
+  build/<file>.mk > patch/<file>.mk.patch
 ```
 
 ## SBOM
