@@ -6,8 +6,8 @@
  $(PKG)_IGNORE   :=
 -$(PKG)_VERSION  := 1.0.5
 -$(PKG)_CHECKSUM := 3b88f267b58009005bc1182d8bd0c4a3218013ce202da722e5e8c9867c6f94f4
-+$(PKG)_VERSION  := 1.2.0
-+$(PKG)_CHECKSUM := 3b8c05ceb6bf667fed997f23b476dd32c3dc6380eee1998185c211d86a7b4918
++$(PKG)_VERSION  := 1.3.0
++$(PKG)_CHECKSUM := 75f1167f5153c659cdd58f2b432d2592bf0477abe0087e195bc621b5594ef10a
  $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
  $(PKG)_GH_CONF  := ImagingDataCommons/libdicom/releases,v,,,,.tar.xz
  $(PKG)_DEPS     := cc meson-wrapper
