@@ -1,0 +1,21 @@
+--- a/libvips/iofuncs/threadpool.c	2026-06-30 08:45:50.273779485 +0800
++++ b/libvips/iofuncs/threadpool.c	2026-06-30 08:45:50.328776526 +0800
+@@ -458,13 +458,12 @@
+ void
+ vips__worker_cond_wait(GCond *cond, GMutex *mutex)
+ {
+-	VipsWorker *worker = (VipsWorker *) g_private_get(&worker_key);
+-
+-	if (worker)
+-		g_atomic_int_inc(&worker->pool->n_waiting);
++	/* AIxMed issue #7: do NOT count cond/semaphore back-pressure waits
++	 * toward n_waiting. They are flow control, not idleness; counting
++	 * them makes the threadpool auto-downsize under load and halves WSI
++	 * conversion throughput vs 8.15.5.
++	 */
+ 	g_cond_wait(cond, mutex);
+-	if (worker)
+-		g_atomic_int_dec_and_test(&worker->pool->n_waiting);
+ }
+ 
+ static void

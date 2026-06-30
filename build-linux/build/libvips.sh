@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
 echo "Build libvips"
-VIPS_VERSION=8.15.5
+VIPS_VERSION=8.18.3
 if [[ -f "/data/cache/vips-${VIPS_VERSION}.tar.xz" ]]; then cp /data/cache/vips-${VIPS_VERSION}.tar.xz vips.tar.xz; else wget -q https://github.com/libvips/libvips/releases/download/v${VIPS_VERSION}/vips-${VIPS_VERSION}.tar.xz -O vips.tar.xz; fi
 tar xf vips.tar.xz
 cd vips-${VIPS_VERSION}
+# AIxMed issue #7: revert the 8.16+ threadpool n_waiting pollution that
+# auto-downsizes the pool under load and halves WSI throughput.
+patch -p1 < /data/vips-nwaiting.patch
 meson setup build \
     --buildtype release \
     -Ddeprecated=false \
