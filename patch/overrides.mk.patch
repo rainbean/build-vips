@@ -1,0 +1,18 @@
+diff --git a/build-win64-mxe/build/overrides.mk b/build-win64-mxe/build/overrides.mk
+index cee26a1..a3fa8ce 100644
+--- a/build-win64-mxe/build/overrides.mk
++++ b/build-win64-mxe/build/overrides.mk
+@@ -83,6 +83,13 @@ libexif_CHECKSUM := d47564c433b733d83b6704c70477e0a4067811d184ec565258ac563d8223
+ libexif_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/libexif-[0-9]*.patch)))
+ libexif_GH_CONF  := libexif/libexif/releases,v,,,,.tar.bz2
+ 
++# upstream version is 1.4.0
++libwebp_VERSION  := 1.6.0
++libwebp_CHECKSUM := e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564
++libwebp_SUBDIR   := libwebp-$(libwebp_VERSION)
++libwebp_FILE     := libwebp-$(libwebp_VERSION).tar.gz
++libwebp_URL      := https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$(libwebp_FILE)
++
+ # upstream version is 4.4.0
+ cfitsio_VERSION  := 4.5.0
+ cfitsio_CHECKSUM := e4854fc3365c1462e493aa586bfaa2f3d0bb8c20b75a524955db64c27427ce09

@@ -12,7 +12,7 @@ work_dir=$(pwd)
 deps=('cmake'
     'zlib' 'lcms'
     'openjpeg' 'libspng' 'mozjpeg' 'libtiff'
-    'libdicom' 'openslide' 'libvips')
+    'libdicom' 'openslide' 'libwebp' 'libvips')
 for lib in "${deps[@]}"; do
     cd /var/tmp
     . $work_dir/$lib.sh

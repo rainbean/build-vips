@@ -13,7 +13,8 @@ cd /usr/local/bin
 tar cf $target vips vipsheader
 
 cd /usr/local/lib
-tar rf $target libopenjp2* libjpeg.so* libtiff.so*
+tar rf $target libopenjp2* libjpeg.so* libtiff.so* \
+    libwebp.so* libwebpmux.so* libwebpdemux.so* libsharpyuv.so*
 
 cd /usr/local/lib/${arch_triplet}
 tar rf $target liblcms2.so* libspng.so* libvips-cpp.so* libvips.so* libdicom.so* libopenslide.so*
@@ -28,7 +29,7 @@ ln -s liblzma.so.5 liblzma.so
 cd /usr/lib/${arch_triplet}/
 tar rf $target \
     libglib-2.0.so* libgobject-2.0.so* libgmodule-2.0.so* libgio-2.0.so* libexpat.so* libzstd.so* \
-    libexif.so* libwebpmux.so* libwebpdemux.so* libwebp.so* libffi.so* \
+    libexif.so* libffi.so* \
     libxml2.so* libpng16* liblzma.so* \
     libpcre.so* libsqlite3.so* libbrotlidec.so* \
     libbrotlicommon.so* libbrotlienc.so* libicuuc.so* libicudata.so* \
