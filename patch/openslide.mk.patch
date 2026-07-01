@@ -1,13 +1,15 @@
+diff --git a/build-win64-mxe/build/openslide.mk b/build-win64-mxe/build/openslide.mk
+index 439f597..e092e80 100644
 --- a/build-win64-mxe/build/openslide.mk
 +++ b/build-win64-mxe/build/openslide.mk
-@@ -2,11 +2,11 @@
+@@ -2,11 +2,11 @@ PKG             := openslide
  $(PKG)_WEBSITE  := https://openslide.org/
  $(PKG)_DESCR    := C library for reading virtual slide images.
  $(PKG)_IGNORE   :=
 -$(PKG)_VERSION  := 4.0.0
 -$(PKG)_CHECKSUM := cc227c44316abb65fb28f1c967706eb7254f91dbfab31e9ae6a48db6cf4ae562
-+$(PKG)_VERSION  := 2026-06-29
-+$(PKG)_CHECKSUM := c80ccd6d37e26f7a3f89d1832f4d55df674e8c423d2083e63dfc861233cb6dcc
++$(PKG)_VERSION  := 2026-07-01
++$(PKG)_CHECKSUM := 938f12093b379ac35d9050e740dd5be91ca10428f48ec86a2a74a57496dc7ac2
  $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST)))/patches/$(PKG)-[0-9]*.patch)))
 -$(PKG)_GH_CONF  := openslide/openslide/releases,v,,,,.tar.xz
 -$(PKG)_DEPS     := cc zlib glib libxml2 cairo gdk-pixbuf libjpeg-turbo tiff openjpeg sqlite libdicom

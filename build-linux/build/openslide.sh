@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Build openslide"
-OPENSLIDE_TAG="2026-06-29"
+OPENSLIDE_TAG="2026-07-01"
 wget -q https://github.com/rainbean/openslide/archive/refs/tags/${OPENSLIDE_TAG}.tar.gz -O openslide.tar.gz
 tar xf openslide.tar.gz
 cd openslide-${OPENSLIDE_TAG}
