@@ -209,12 +209,15 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 https://github.com/rainbean/openslide
 
 All other Windows dependencies (cairo, cgif, fontconfig, freetype, GLib,
-harfbuzz, highway, lcms, libarchive, libexif, libffi, libheif, libimagequant,
-libpng, mozjpeg/jpegli, pango, pixman, libspng, libtiff, libwebp, libxml2,
-zlib-ng; and vips-all extras: brotli, cfitsio, fftw, imagemagick, imath,
-libdicom, libjxl, matio, nifticlib, openexr, openjpeg, poppler) are
-versioned and attributed in build-win64-mxe/build/overrides.mk and the
-accompanying README in the upstream submodule.
+lcms, libarchive, libexif, libffi, libimagequant, libpng, mozjpeg/jpegli,
+pixman, libspng, libtiff, libwebp, libxml2, zlib-ng; and vips-all extras:
+libdicom, openjpeg) are versioned and attributed in
+build-win64-mxe/build/overrides.mk and the accompanying README in the
+upstream submodule.
+
+The Windows build is trimmed (patch/vips-all.mk.patch): FFTW (GPL) and
+Poppler (GPL) are disabled and NOT bundled or linked, so the distribution
+contains no GPL-licensed components.
 
 ================================================================================
 BUILD-TIME DEPENDENCIES (not bundled in the distribution)

@@ -1,5 +1,5 @@
 diff --git a/build-win64-mxe/build/vips-all.mk b/build-win64-mxe/build/vips-all.mk
-index d270e63..15b0cfb 100644
+index d270e63..315d2af 100644
 --- a/build-win64-mxe/build/vips-all.mk
 +++ b/build-win64-mxe/build/vips-all.mk
 @@ -8,16 +8,16 @@ $(PKG)_PATCHES  := $(realpath $(sort $(wildcard $(dir $(lastword $(MAKEFILE_LIST
@@ -12,7 +12,7 @@ index d270e63..15b0cfb 100644
 -                   cfitsio nifticlib poppler fftw openslide libjxl cgif
 +$(PKG)_DEPS     := cc meson-wrapper libwebp glib libarchive \
 +                   libjpeg-turbo tiff lcms libexif libpng \
-+                   libspng libimagequant fftw openslide cgif
++                   libspng libimagequant openslide cgif
  
  define $(PKG)_PRE_CONFIGURE
      # Copy some files to the packaging directory
@@ -23,7 +23,7 @@ index d270e63..15b0cfb 100644
  
      (printf '{\n'; \
       printf '  "aom": "$(aom_VERSION)",\n'; \
-@@ -85,9 +85,16 @@ define $(PKG)_BUILD
+@@ -85,9 +85,17 @@ define $(PKG)_BUILD
          -Ddeprecated=false \
          -Dexamples=false \
          -Dintrospection=disabled \
@@ -40,6 +40,7 @@ index d270e63..15b0cfb 100644
 +        -Dnifti=disabled \
 +        -Dopenexr=disabled \
 +        -Dpoppler=disabled \
++        -Dfftw=disabled \
          -Dpdfium=disabled \
          -Dquantizr=disabled \
          -Dc_args='$(CFLAGS) -DVIPS_DLLDIR_AS_LIBDIR' \
