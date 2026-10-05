@@ -39,5 +39,11 @@ git -C build-win64-mxe diff \
 
 ## SBOM
 
-- install [CycloneDX Generator](https://cyclonedx.github.io/cdxgen/): `npm install -g @cyclonedx/cdxgen`
-- generate SBOM: `cdxgen -o sbom.json`
+Each released build has one CycloneDX SBOM per platform, generated from the released archives:
+
+```bash
+sbom/sbom.py generate sbom/releases/<build>
+```
+
+See [docs/sbom.md](docs/sbom.md) for the procedure. Don't run `cdxgen` over the build tree: it
+lists the build toolchain, not what ships.

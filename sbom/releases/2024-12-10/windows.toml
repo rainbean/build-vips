@@ -1,0 +1,463 @@
+# Windows x64 package of build 2024-12-10 (build-vips 7a7f992, submodule
+# build-win64-mxe e949d29, decart 2.7.5).
+#
+# Only vips-dev-8.15/bin/ is distributed: decart's install.ps1 keeps bin/ as
+# convert/ and deletes include/, lib/, share/ and etc/. Every file under bin/
+# must match exactly one component's `files` globs, and every entry of the
+# shipped versions.json must be claimed through `versions_key`; sbom.py fails
+# otherwise. MXE itself was cloned from master unpinned, so the shipped files
+# and versions.json are the authority, not the build tree.
+
+[sbom]
+name = "LibVIPS-win64"
+version = "2024-12-10"
+description = "libvips 8.15.2 with openslide 2024-12-10 and dependencies, Windows x64 (llvm-mingw, UCRT), as distributed in decart 2.7.5 (convert/)."
+output = "SBOM-LibVIPS-win64-8.15.2-2024-12-10.cdx.json"
+
+[archive]
+file = "vips-w64-2024-12-10.zip"
+url = "s3://build.aixmed.com/vips/vips-w64-2024-12-10.zip"
+sha256 = "60faf33f43e3d2a6c1e1f1b485d629d9b10907907c0ea5a4d2e1b95a3502b684"
+scope = "vips-dev-8.15/bin"
+versions_json = "vips-dev-8.15/versions.json"
+
+[properties]
+build-win64-mxe-commit = "e949d2910d4de739a808739d527bcade7d27edec"
+toolchain = "llvm-mingw 79e51a9, LLVM 18.1.1, UCRT (build-win64-mxe/build/plugins/llvm-mingw at e949d29)"
+
+[[component]]
+name = "libvips"
+version = "8.15.2"
+license = "LGPL-2.1-or-later"
+purl = "pkg:github/libvips/libvips@v8.15.2"
+source = "https://github.com/libvips/libvips/releases/download/v8.15.2/vips-8.15.2.tar.xz"
+versions_key = "vips"
+files = ["vips.exe", "vipsedit.exe", "vipsheader.exe", "vipsthumbnail.exe",
+         "libvips-42.dll", "libvips-cpp-42.dll", "vips-modules-8.15/*.dll"]
+
+  [[component.static]]
+  name = "libnsgif"
+  version = "git-2023-01-22"
+  license = "MIT"
+  purl = "pkg:generic/libnsgif@git-2023-01-22?vcs_url=git%3A%2F%2Fgit.netsurf-browser.org%2Flibnsgif.git"
+  vcs = "git://git.netsurf-browser.org/libnsgif.git"
+  notes = ["Vendored in the libvips source tree (libvips/foreign/libnsgif, 'Last updated 22 Jan 2023'); upstream is unversioned."]
+  evidence = { binary = true, text = "nsgif strings in libvips-42.dll" }
+
+[[component]]
+name = "proxy-libintl"
+version = "0.4"
+license = "LGPL-2.0-or-later"
+purl = "pkg:github/frida/proxy-libintl@0.4"
+source = "https://github.com/frida/proxy-libintl/archive/refs/tags/0.4.tar.gz"
+versions_key = "proxy-libintl"
+notes = ["Built as a static stub library (--default-library=static, STUB_ONLY) in place of gettext; see build/plugins/proxy-libintl at e949d29."]
+embedded_in = ["libglib-2.0-0.dll", "libgdk_pixbuf-2.0-0.dll", "libvips-42.dll"]
+evidence = { binary = true, text = "the stub bindtextdomain() return string \"/dummy\" in each host DLL; no libintl DLL is shipped or imported" }
+
+[[component]]
+name = "openslide"
+version = "2024-12-10"
+license = "LGPL-2.1-only AND IJG"
+purl = "pkg:github/rainbean/openslide@2024-12-10"
+source = "https://github.com/rainbean/openslide/archive/refs/tags/2024-12-10.tar.gz"
+versions_key = "openslide"
+notes = ["src/openslide-jdatasrc.c is IJG-licensed code from libjpeg-turbo.", "AIxMed fork of openslide/openslide; tag 2024-12-10 is commit 64f2582ae07998f43102258d60d8e88d4a4a992d."]
+files = ["libopenslide-1.dll"]
+
+[[component]]
+name = "libdicom"
+version = "1.0.5"
+license = "MIT"
+purl = "pkg:github/imagingdatacommons/libdicom@v1.0.5"
+source = "https://github.com/ImagingDataCommons/libdicom/releases/download/v1.0.5/libdicom-1.0.5.tar.xz"
+versions_key = "dicom"
+files = ["libdicom-1.dll"]
+
+[[component]]
+name = "libaom"
+version = "3.8.2"
+license = "BSD-2-Clause"
+purl = "pkg:generic/libaom@3.8.2?download_url=https%3A%2F%2Fstorage.googleapis.com%2Faom-releases%2Flibaom-3.8.2.tar.gz"
+source = "https://storage.googleapis.com/aom-releases/libaom-3.8.2.tar.gz"
+versions_key = "aom"
+notes = ["Covered by the Alliance for Open Media Patent License 1.0 (PATENTS)."]
+files = ["libaom.dll"]
+
+[[component]]
+name = "libarchive"
+version = "3.7.2"
+license = "BSD-2-Clause"
+purl = "pkg:github/libarchive/libarchive@v3.7.2"
+source = "https://github.com/libarchive/libarchive/releases/download/v3.7.2/libarchive-3.7.2.tar.xz"
+versions_key = "archive"
+files = ["libarchive-13.dll"]
+
+[[component]]
+name = "brotli"
+version = "1.1.0"
+license = "MIT"
+purl = "pkg:github/google/brotli@v1.1.0"
+source = "https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz"
+versions_key = "brotli"
+files = ["libbrotlicommon.dll", "libbrotlidec.dll", "libbrotlienc.dll"]
+
+[[component]]
+name = "cairo"
+version = "1.18.0"
+license = "LGPL-2.1-only OR MPL-1.1"
+purl = "pkg:generic/cairo@1.18.0?download_url=https%3A%2F%2Fcairographics.org%2Freleases%2Fcairo-1.18.0.tar.xz"
+source = "https://cairographics.org/releases/cairo-1.18.0.tar.xz"
+versions_key = "cairo"
+files = ["libcairo-2.dll"]
+
+[[component]]
+name = "cfitsio"
+version = "4.4.0"
+license = "CFITSIO"
+purl = "pkg:generic/cfitsio@4.4.0?download_url=https%3A%2F%2Fheasarc.gsfc.nasa.gov%2FFTP%2Fsoftware%2Ffitsio%2Fc%2Fcfitsio-4.4.0.tar.gz"
+source = "https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.4.0.tar.gz"
+versions_key = "cfitsio"
+notes = ["The source tarball also carries licenses/NASA_Open_Source_Agreement_1.3.txt, which no source file references; the file headers carry the CFITSIO notice."]
+files = ["libcfitsio.dll"]
+
+[[component]]
+name = "cgif"
+version = "0.3.2"
+license = "MIT"
+purl = "pkg:github/dloebl/cgif@V0.3.2"
+source = "https://github.com/dloebl/cgif/archive/refs/tags/V0.3.2.tar.gz"
+versions_key = "cgif"
+files = ["libcgif-0.dll"]
+
+[[component]]
+name = "libexif"
+version = "0.6.24"
+license = "LGPL-2.1-or-later"
+purl = "pkg:github/libexif/libexif@v0.6.24"
+source = "https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2"
+versions_key = "exif"
+files = ["libexif-12.dll"]
+
+[[component]]
+name = "expat"
+version = "2.6.2"
+license = "MIT"
+purl = "pkg:github/libexpat/libexpat@R_2_6_2"
+source = "https://github.com/libexpat/libexpat/releases/download/R_2_6_2/expat-2.6.2.tar.xz"
+versions_key = "expat"
+files = ["libexpat-1.dll"]
+
+[[component]]
+name = "libffi"
+version = "3.4.6"
+license = "MIT"
+purl = "pkg:github/libffi/libffi@v3.4.6"
+source = "https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz"
+versions_key = "ffi"
+files = ["libffi-8.dll"]
+
+[[component]]
+name = "fftw"
+version = "3.3.10"
+license = "GPL-2.0-or-later"
+purl = "pkg:generic/fftw@3.3.10?download_url=https%3A%2F%2Ffftw.org%2Ffftw-3.3.10.tar.gz"
+source = "https://fftw.org/fftw-3.3.10.tar.gz"
+versions_key = "fftw"
+files = ["libfftw3-3.dll"]
+
+[[component]]
+name = "fontconfig"
+version = "2.15.0"
+license = "HPND-sell-variant"
+purl = "pkg:generic/fontconfig@2.15.0?download_url=https%3A%2F%2Fwww.freedesktop.org%2Fsoftware%2Ffontconfig%2Frelease%2Ffontconfig-2.15.0.tar.xz"
+source = "https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.15.0.tar.xz"
+versions_key = "fontconfig"
+files = ["libfontconfig-1.dll"]
+
+[[component]]
+name = "freetype"
+version = "2.13.2"
+license = "FTL OR GPL-2.0-or-later"
+purl = "pkg:generic/freetype@2.13.2?download_url=https%3A%2F%2Fdownload.savannah.gnu.org%2Freleases%2Ffreetype%2Ffreetype-2.13.2.tar.xz"
+source = "https://download.savannah.gnu.org/releases/freetype/freetype-2.13.2.tar.xz"
+versions_key = "freetype"
+files = ["libfreetype-6.dll"]
+
+[[component]]
+name = "fribidi"
+version = "1.0.13"
+license = "LGPL-2.1-or-later"
+purl = "pkg:github/fribidi/fribidi@v1.0.13"
+source = "https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz"
+versions_key = "fribidi"
+files = ["libfribidi-0.dll"]
+
+[[component]]
+name = "gdk-pixbuf"
+version = "2.42.10"
+license = "LGPL-2.1-or-later"
+purl = "pkg:generic/gdk-pixbuf@2.42.10?download_url=https%3A%2F%2Fdownload.gnome.org%2Fsources%2Fgdk-pixbuf%2F2.42%2Fgdk-pixbuf-2.42.10.tar.xz"
+source = "https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz"
+versions_key = "gdkpixbuf"
+files = ["libgdk_pixbuf-2.0-0.dll"]
+
+[[component]]
+name = "glib"
+version = "2.80.0"
+license = "LGPL-2.1-or-later"
+purl = "pkg:generic/glib@2.80.0?download_url=https%3A%2F%2Fdownload.gnome.org%2Fsources%2Fglib%2F2.80%2Fglib-2.80.0.tar.xz"
+source = "https://download.gnome.org/sources/glib/2.80/glib-2.80.0.tar.xz"
+versions_key = "glib"
+notes = ["Built without GRegex (patches/glib-2-without-gregex.patch), so no PCRE2 is linked."]
+files = ["libglib-2.0-0.dll", "libgio-2.0-0.dll", "libgmodule-2.0-0.dll", "libgobject-2.0-0.dll"]
+
+[[component]]
+name = "harfbuzz"
+version = "8.3.0"
+license = "MIT-Modern-Variant"
+purl = "pkg:github/harfbuzz/harfbuzz@8.3.0"
+source = "https://github.com/harfbuzz/harfbuzz/releases/download/8.3.0/harfbuzz-8.3.0.tar.xz"
+versions_key = "harfbuzz"
+files = ["libharfbuzz-0.dll"]
+
+[[component]]
+name = "libheif"
+version = "1.17.6"
+license = "LGPL-3.0-or-later"
+purl = "pkg:github/strukturag/libheif@v1.17.6"
+source = "https://github.com/strukturag/libheif/releases/download/v1.17.6/libheif-1.17.6.tar.gz"
+versions_key = "heif"
+files = ["libheif.dll"]
+
+[[component]]
+name = "highway"
+version = "1.1.0"
+license = "Apache-2.0 OR BSD-3-Clause"
+purl = "pkg:github/google/highway@1.1.0"
+source = "https://github.com/google/highway/archive/refs/tags/1.1.0.tar.gz"
+versions_key = "highway"
+files = ["libhwy.dll"]
+
+[[component]]
+name = "imagemagick"
+version = "6.9.13-7"
+license = "ImageMagick"
+purl = "pkg:github/imagemagick/imagemagick6@6.9.13-7"
+source = "https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/6.9.13-7.tar.gz"
+versions_key = "imagemagick"
+files = ["libMagickCore-6.Q16-7.dll"]
+
+[[component]]
+name = "libimagequant"
+version = "2.4.1"
+license = "BSD-2-Clause AND HPND"
+purl = "pkg:github/lovell/libimagequant@v2.4.1"
+source = "https://github.com/lovell/libimagequant/archive/refs/tags/v2.4.1.tar.gz"
+versions_key = "imagequant"
+notes = ["The BSD-licensed 2.4.1 fork maintained for libvips/sharp, not the GPL-3.0 upstream (2.5+)."]
+files = ["libimagequant.dll"]
+
+[[component]]
+name = "libjxl"
+version = "0.10.2"
+license = "BSD-3-Clause"
+purl = "pkg:github/libjxl/libjxl@v0.10.2"
+source = "https://github.com/libjxl/libjxl/archive/refs/tags/v0.10.2.tar.gz"
+versions_key = "jxl"
+files = ["libjxl.dll", "libjxl_cms.dll", "libjxl_threads.dll"]
+
+[[component]]
+name = "lcms2"
+version = "2.16"
+license = "MIT"
+purl = "pkg:github/mm2/little-cms@lcms2.16"
+source = "https://github.com/mm2/Little-CMS/releases/download/lcms2.16/lcms2-2.16.tar.gz"
+versions_key = "lcms"
+files = ["liblcms2-2.dll"]
+
+[[component]]
+name = "matio"
+version = "1.5.26"
+license = "BSD-2-Clause"
+purl = "pkg:github/tbeu/matio@v1.5.26"
+source = "https://github.com/tbeu/matio/releases/download/v1.5.26/matio-1.5.26.tar.gz"
+versions_key = "matio"
+files = ["libmatio-11.dll"]
+
+[[component]]
+name = "mozjpeg"
+version = "4.1.5"
+license = "IJG AND BSD-3-Clause AND Zlib"
+purl = "pkg:github/mozilla/mozjpeg@v4.1.5"
+source = "https://github.com/mozilla/mozjpeg/archive/refs/tags/v4.1.5.tar.gz"
+versions_key = "mozjpeg"
+files = ["libjpeg-62.dll"]
+
+[[component]]
+name = "nifticlib"
+version = "3.0.1"
+license = "LicenseRef-public-domain"
+purl = "pkg:github/nifti-imaging/nifti_clib@v3.0.1"
+source = "https://github.com/NIFTI-Imaging/nifti_clib/archive/refs/tags/v3.0.1.tar.gz"
+versions_key = "nifti"
+files = ["libniftiio.dll", "libznz.dll"]
+
+[[component]]
+name = "openexr"
+version = "3.1.11"
+license = "BSD-3-Clause"
+purl = "pkg:github/academysoftwarefoundation/openexr@v3.1.11"
+source = "https://github.com/AcademySoftwareFoundation/openexr/archive/v3.1.11.tar.gz"
+versions_key = "openexr"
+files = ["libOpenEXR-3_1.dll", "libIex-3_1.dll", "libIlmThread-3_1.dll"]
+
+  [[component.static]]
+  name = "imath"
+  version = "3.1.9"
+  license = "BSD-3-Clause"
+  purl = "pkg:github/academysoftwarefoundation/imath@v3.1.9"
+  source = "https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.9.tar.gz"
+  notes = ["Not in versions.json; version from lib/pkgconfig/Imath.pc in the release zip."]
+  evidence = { binary = true, text = "Imath symbols exported by libOpenEXR-3_1.dll; no Imath DLL is shipped or imported" }
+
+[[component]]
+name = "openjpeg"
+version = "2.5.2"
+license = "BSD-2-Clause"
+purl = "pkg:github/uclouvain/openjpeg@v2.5.2"
+source = "https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.2.tar.gz"
+versions_key = "openjpeg"
+files = ["libopenjp2.dll"]
+
+[[component]]
+name = "pango"
+version = "1.52.1"
+license = "LGPL-2.0-or-later"
+purl = "pkg:generic/pango@1.52.1?download_url=https%3A%2F%2Fdownload.gnome.org%2Fsources%2Fpango%2F1.52%2Fpango-1.52.1.tar.xz"
+source = "https://download.gnome.org/sources/pango/1.52/pango-1.52.1.tar.xz"
+versions_key = "pango"
+files = ["libpango-1.0-0.dll", "libpangocairo-1.0-0.dll", "libpangoft2-1.0-0.dll"]
+
+[[component]]
+name = "pixman"
+version = "0.43.4"
+license = "MIT"
+purl = "pkg:generic/pixman@0.43.4?download_url=https%3A%2F%2Fcairographics.org%2Freleases%2Fpixman-0.43.4.tar.gz"
+source = "https://cairographics.org/releases/pixman-0.43.4.tar.gz"
+versions_key = "pixman"
+files = ["libpixman-1-0.dll"]
+
+[[component]]
+name = "libpng"
+version = "1.6.43"
+license = "libpng-2.0"
+purl = "pkg:generic/libpng@1.6.43?download_url=https%3A%2F%2Fdownload.sourceforge.net%2Flibpng%2Flibpng-1.6.43.tar.xz"
+source = "https://download.sourceforge.net/libpng/libpng-1.6.43.tar.xz"
+versions_key = "png"
+files = ["libpng16-16.dll"]
+
+[[component]]
+name = "poppler"
+version = "24.03.0"
+license = "GPL-2.0-only OR GPL-3.0-only"
+purl = "pkg:generic/poppler@24.03.0?download_url=https%3A%2F%2Fpoppler.freedesktop.org%2Fpoppler-24.03.0.tar.xz"
+source = "https://poppler.freedesktop.org/poppler-24.03.0.tar.xz"
+versions_key = "poppler"
+notes = ["Loaded only through the vips-poppler.dll module (PDF load)."]
+files = ["libpoppler-135.dll", "libpoppler-glib-8.dll"]
+
+[[component]]
+name = "librsvg"
+version = "2.57.92"
+license = "LGPL-2.1-or-later"
+purl = "pkg:generic/librsvg@2.57.92?download_url=https%3A%2F%2Fdownload.gnome.org%2Fsources%2Flibrsvg%2F2.57%2Flibrsvg-2.57.92.tar.xz"
+source = "https://download.gnome.org/sources/librsvg/2.57/librsvg-2.57.92.tar.xz"
+versions_key = "rsvg"
+files = ["librsvg-2-2.dll"]
+notes = ["Statically links the crates.io dependencies resolved from librsvg's Cargo.lock for x86_64-pc-windows-gnullvm (windows-librsvg-crates.txt), nested here. The linker may have discarded unused code, so the crate list is an upper bound."]
+cargo_tree = { file = "windows-librsvg-crates.txt", exclude = ["librsvg", "librsvg-c"] }
+
+  [[component.static]]
+  name = "rust-std"
+  version = "nightly-2024-03-14"
+  license = "MIT OR Apache-2.0"
+  purl = "pkg:generic/rust-std@nightly-2024-03-14?download_url=https%3A%2F%2Fstatic.rust-lang.org%2Fdist%2F2024-03-14%2Frustc-nightly-src.tar.xz"
+  source = "https://static.rust-lang.org/dist/2024-03-14/rustc-nightly-src.tar.xz"
+  notes = ["The Rust standard library linked into the librsvg staticlib; toolchain pinned in build/plugins/llvm-mingw/rust.mk at e949d29."]
+  evidence = { binary = false, text = "librsvg's C API is a Rust staticlib (librsvg-c); a staticlib embeds std" }
+
+[[component]]
+name = "libspng"
+version = "0.7.4"
+license = "BSD-2-Clause"
+purl = "pkg:github/randy408/libspng@v0.7.4"
+source = "https://github.com/randy408/libspng/archive/refs/tags/v0.7.4.tar.gz"
+versions_key = "spng"
+files = ["libspng-0.dll"]
+
+[[component]]
+name = "sqlite"
+version = "3.45.2"
+license = "blessing"
+purl = "pkg:generic/sqlite@3.45.2?download_url=https%3A%2F%2Fwww.sqlite.org%2F2024%2Fsqlite-autoconf-3450200.tar.gz"
+source = "https://www.sqlite.org/2024/sqlite-autoconf-3450200.tar.gz"
+versions_key = "sqlite"
+versions_value = "3450200"
+files = ["libsqlite3-0.dll"]
+
+[[component]]
+name = "libtiff"
+version = "4.6.0"
+license = "libtiff"
+purl = "pkg:generic/libtiff@4.6.0?download_url=https%3A%2F%2Fdownload.osgeo.org%2Flibtiff%2Ftiff-4.6.0.tar.xz"
+source = "https://download.osgeo.org/libtiff/tiff-4.6.0.tar.xz"
+versions_key = "tiff"
+files = ["libtiff-6.dll"]
+
+[[component]]
+name = "libwebp"
+version = "1.3.2"
+license = "BSD-3-Clause"
+purl = "pkg:github/webmproject/libwebp@v1.3.2"
+source = "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.3.2.tar.gz"
+versions_key = "webp"
+files = ["libwebp-7.dll", "libwebpdemux-2.dll", "libwebpmux-3.dll", "libsharpyuv-0.dll"]
+
+[[component]]
+name = "libxml2"
+version = "2.12.5"
+license = "MIT"
+purl = "pkg:generic/libxml2@2.12.5?download_url=https%3A%2F%2Fdownload.gnome.org%2Fsources%2Flibxml2%2F2.12%2Flibxml2-2.12.5.tar.xz"
+source = "https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.5.tar.xz"
+versions_key = "xml"
+files = ["libxml2-2.dll"]
+
+[[component]]
+name = "zlib-ng"
+version = "2.1.6"
+license = "Zlib"
+purl = "pkg:github/zlib-ng/zlib-ng@2.1.6"
+source = "https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.1.6.tar.gz"
+versions_key = "zlib-ng"
+notes = ["Built in zlib-compatible mode; ships as libz1.dll."]
+files = ["libz1.dll"]
+
+[[component]]
+name = "zstd"
+version = "1.5.5"
+license = "BSD-3-Clause OR GPL-2.0-only"
+purl = "pkg:github/facebook/zstd@v1.5.5"
+source = "https://github.com/facebook/zstd/releases/download/v1.5.5/zstd-1.5.5.tar.gz"
+notes = ["Not in versions.json; version from lib/pkgconfig/libzstd.pc and the zstd-1.5.5 build path in libzstd.dll."]
+files = ["libzstd.dll"]
+
+[[component]]
+name = "llvm-runtime"
+version = "18.1.1"
+license = "Apache-2.0 WITH LLVM-exception"
+purl = "pkg:github/llvm/llvm-project@llvmorg-18.1.1"
+source = "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.1/llvm-project-18.1.1.src.tar.xz"
+description = "libc++ and libunwind from the llvm-mingw toolchain"
+notes = ["Not in versions.json; version from build/plugins/llvm-mingw/llvm.mk at e949d29 and llvm-project-18.1.1 paths in libc++.dll.", "Code predating the LLVM relicense is also under NCSA OR MIT."]
+files = ["libc++.dll", "libunwind.dll"]

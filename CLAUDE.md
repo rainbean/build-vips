@@ -57,6 +57,8 @@ build-windows.sh      # Windows entrypoint: applies patches, builds, reverses pa
 build-linux/          # Linux Docker build
   container/          # Dockerfile (ubuntu:jammy, Clang toolchain, Meson/Ninja)
   build/              # Per-dependency shell scripts + build.sh orchestrator + cache/
+sbom/                 # sbom.py + per-build catalogs and generated SBOMs (releases/<build>/)
+docs/                 # sbom.md, adr/ (architecture decisions), agents/
 patch/                # Unified-diff patches applied to the submodule at Windows build time
   vips-all.mk.patch   # Trims the libvips feature set; adds THIRD-PARTY-NOTICES
   openslide.mk.patch  # Points to rainbean/openslide fork, pins 2026-04-13, adds zstd
@@ -81,8 +83,9 @@ LICENSE, THIRD-PARTY-NOTICES   # LICENSE ships in artifacts; THIRD-PARTY-NOTICES
 - **The patched `vips-all` build is intentionally trimmed** (modules, fontconfig, heif, jxl,
   magick, matio, nifti, openexr, poppler disabled) to cut runtime dependencies and suppress
   the `vips-magick.dll` warning.
-- **Distribution**: every tarball includes `LICENSE`; an SBOM can be generated via CycloneDX
-  (see README). `THIRD-PARTY-NOTICES` is **not** bundled in artifacts by design — on Windows
+- **Distribution**: every tarball includes `LICENSE`. Distribution SBOMs (CycloneDX, one
+  per platform per build) are generated from the released archives by `sbom/sbom.py`
+  against a reviewed catalog in `sbom/releases/<build>/` — see `docs/sbom.md` and ADR 0001. `THIRD-PARTY-NOTICES` is **not** bundled in artifacts by design — on Windows
   `build-windows.sh` stages it into the submodule build dir and `vips-all.mk.patch` copies it
   into `vips-packaging`, but the submodule's `package-vipsdev.sh` only zips a fixed whitelist
   (`ChangeLog,LICENSE,README.md,versions.json`), so the notices file is intentionally dropped.

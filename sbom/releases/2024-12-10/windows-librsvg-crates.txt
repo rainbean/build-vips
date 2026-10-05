@@ -1,0 +1,133 @@
+# Rust crates statically linked into librsvg-2-2.dll (librsvg 2.57.92, target x86_64-pc-windows-gnullvm).
+# Produced from the release tarball (sha256 2a2c30beabf3cfdd40a4a6dbed3fb33e677caee5d8f304788249b731e7be3852) with:
+#   cargo tree --locked -p librsvg-c --target x86_64-pc-windows-gnullvm -e normal,no-proc-macro --prefix none -f '{p}|{l}'
+# (deduplicated and sorted). Proc-macro and build-only crates are excluded: they run at build time and are not linked.
+adler v1.0.2|0BSD OR MIT OR Apache-2.0
+aho-corasick v1.1.2|Unlicense OR MIT
+approx v0.5.1|Apache-2.0
+bit_field v0.10.2|Apache-2.0/MIT
+bitflags v1.3.2|MIT/Apache-2.0
+bitflags v2.4.2|MIT OR Apache-2.0
+bytemuck v1.14.2|Zlib OR Apache-2.0 OR MIT
+byteorder v1.5.0|Unlicense OR MIT
+cairo-rs v0.19.1|MIT
+cairo-sys-rs v0.19.1|MIT
+cast v0.3.0|MIT OR Apache-2.0
+cfg-if v1.0.0|MIT/Apache-2.0
+color_quant v1.1.0|MIT
+crc32fast v1.3.2|MIT OR Apache-2.0
+crossbeam-deque v0.8.5|MIT OR Apache-2.0
+crossbeam-epoch v0.9.18|MIT OR Apache-2.0
+crossbeam-utils v0.8.19|MIT OR Apache-2.0
+cssparser v0.31.2|MPL-2.0
+data-url v0.3.1|MIT OR Apache-2.0
+dtoa-short v0.3.4|MPL-2.0
+dtoa v1.0.9|MIT OR Apache-2.0
+either v1.9.0|MIT OR Apache-2.0
+encoding_rs v0.8.33|(Apache-2.0 OR MIT) AND BSD-3-Clause
+exr v1.72.0|BSD-3-Clause
+fdeflate v0.3.4|MIT OR Apache-2.0
+flate2 v1.0.28|MIT OR Apache-2.0
+float-cmp v0.9.0|MIT
+flume v0.11.0|Apache-2.0/MIT
+form_urlencoded v1.2.1|MIT OR Apache-2.0
+futf v0.1.5|MIT / Apache-2.0
+futures-channel v0.3.30|MIT OR Apache-2.0
+futures-core v0.3.30|MIT OR Apache-2.0
+futures-executor v0.3.30|MIT OR Apache-2.0
+futures-io v0.3.30|MIT OR Apache-2.0
+futures-task v0.3.30|MIT OR Apache-2.0
+futures-util v0.3.30|MIT OR Apache-2.0
+fxhash v0.2.1|Apache-2.0/MIT
+gdk-pixbuf-sys v0.19.0|MIT
+gdk-pixbuf v0.19.0|MIT
+gif v0.12.0|MIT/Apache-2.0
+gio-sys v0.19.0|MIT
+gio v0.19.0|MIT
+glib-sys v0.19.0|MIT
+glib v0.19.0|MIT
+gobject-sys v0.19.0|MIT
+half v2.3.1|MIT OR Apache-2.0
+idna v0.5.0|MIT OR Apache-2.0
+image v0.24.8|MIT
+itertools v0.12.1|MIT OR Apache-2.0
+itoa v1.0.10|MIT OR Apache-2.0
+jpeg-decoder v0.3.1|MIT OR Apache-2.0
+language-tags v0.3.2|MIT/Apache-2.0
+lazy_static v1.4.0|MIT/Apache-2.0
+lebe v0.5.2|BSD-3-Clause
+libc v0.2.153|MIT OR Apache-2.0
+librsvg-c v2.57.92|LGPL-2.1-or-later
+librsvg v2.58.0-beta.2|LGPL-2.1-or-later
+locale_config v0.3.0|MIT
+lock_api v0.4.11|MIT OR Apache-2.0
+log v0.4.20|MIT OR Apache-2.0
+mac v0.1.1|MIT/Apache-2.0
+markup5ever v0.11.0|MIT OR Apache-2.0
+matrixmultiply v0.3.8|MIT/Apache-2.0
+memchr v2.7.1|Unlicense OR MIT
+miniz_oxide v0.7.2|MIT OR Zlib OR Apache-2.0
+nalgebra v0.32.3|BSD-3-Clause
+new_debug_unreachable v1.0.4|MIT
+num-complex v0.4.5|MIT OR Apache-2.0
+num-integer v0.1.46|MIT OR Apache-2.0
+num-rational v0.4.1|MIT OR Apache-2.0
+num-traits v0.2.18|MIT OR Apache-2.0
+once_cell v1.19.0|MIT OR Apache-2.0
+pangocairo-sys v0.19.0|MIT
+pangocairo v0.19.1|MIT
+pango-sys v0.19.0|MIT
+pango v0.19.0|MIT
+parking_lot_core v0.9.9|MIT OR Apache-2.0
+parking_lot v0.12.1|MIT OR Apache-2.0
+percent-encoding v2.3.1|MIT OR Apache-2.0
+phf_shared v0.10.0|MIT
+phf_shared v0.11.2|MIT
+phf v0.10.1|MIT
+phf v0.11.2|MIT
+pin-project-lite v0.2.13|Apache-2.0 OR MIT
+pin-utils v0.1.0|MIT OR Apache-2.0
+png v0.17.11|MIT OR Apache-2.0
+precomputed-hash v0.1.1|MIT
+qoi v0.4.1|MIT/Apache-2.0
+rawpointer v0.2.1|MIT/Apache-2.0
+rayon-core v1.12.1|MIT OR Apache-2.0
+rayon v1.8.1|MIT OR Apache-2.0
+rctree v0.6.0|MIT
+regex-automata v0.4.5|MIT OR Apache-2.0
+regex-syntax v0.8.2|MIT OR Apache-2.0
+regex v1.10.3|MIT OR Apache-2.0
+rgb v0.8.37|MIT
+safe_arch v0.7.1|Zlib OR Apache-2.0 OR MIT
+scopeguard v1.2.0|MIT OR Apache-2.0
+selectors v0.25.0|MPL-2.0
+serde v1.0.196|MIT OR Apache-2.0
+servo_arc v0.3.0|MIT/Apache-2.0
+simba v0.8.1|Apache-2.0
+simd-adler32 v0.3.7|MIT
+siphasher v0.3.11|MIT/Apache-2.0
+slab v0.4.9|MIT
+smallvec v1.13.1|MIT OR Apache-2.0
+spin v0.9.8|MIT
+stable_deref_trait v1.2.0|MIT/Apache-2.0
+string_cache v0.8.7|MIT OR Apache-2.0
+tendril v0.4.3|MIT/Apache-2.0
+thiserror v1.0.56|MIT OR Apache-2.0
+tiff v0.9.1|MIT
+tinyvec_macros v0.1.1|MIT OR Apache-2.0 OR Zlib
+tinyvec v1.6.0|Zlib OR Apache-2.0 OR MIT
+typenum v1.17.0|MIT OR Apache-2.0
+unicode-bidi v0.3.15|MIT OR Apache-2.0
+unicode-normalization v0.1.22|MIT/Apache-2.0
+url v2.5.0|MIT OR Apache-2.0
+utf-8 v0.7.6|MIT OR Apache-2.0
+weezl v0.1.8|MIT OR Apache-2.0
+wide v0.7.15|Zlib OR Apache-2.0 OR MIT
+winapi v0.3.9|MIT/Apache-2.0
+windows-sys v0.52.0|MIT OR Apache-2.0
+windows-targets v0.48.5|MIT OR Apache-2.0
+windows-targets v0.52.0|MIT OR Apache-2.0
+windows_x86_64_gnullvm v0.48.5|MIT OR Apache-2.0
+windows_x86_64_gnullvm v0.52.0|MIT OR Apache-2.0
+xml5ever v0.17.0|MIT OR Apache-2.0
+zune-inflate v0.2.54|MIT OR Apache-2.0 OR Zlib
