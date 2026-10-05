@@ -1,6 +1,8 @@
 # 1. Distribution SBOMs are generated from the released archive against a reviewed catalog
 
-- Status: accepted
+- Status: superseded by decart ADR 0006 (sbom/ moved to the decart repo, which generates the
+  SBOMs and SOUP list of every bundle DeCart ships; the vips catalogs are now
+  decart sbom/bundles/vips/<build>/)
 - Date: 2026-10-05
 
 ## Context

@@ -39,11 +39,8 @@ git -C build-win64-mxe diff \
 
 ## SBOM
 
-Each released build has one CycloneDX SBOM per platform, generated from the released archives:
-
-```bash
-sbom/sbom.py generate sbom/releases/<build>
-```
-
-See [docs/sbom.md](docs/sbom.md) for the procedure. Don't run `cdxgen` over the build tree: it
-lists the build toolchain, not what ships.
+SBOMs for each released build are generated in the decart repo, which ships these packages:
+the catalogs are in `sbom/bundles/vips/<build>/` and the procedure is in decart's `docs/sbom.md`.
+For a new build, keep dependency versions pinned in the build scripts and `THIRD-PARTY-NOTICES`
+up to date. Those are what the catalog is written from. Don't run `cdxgen` over the build tree:
+it lists the build toolchain, not what ships.
